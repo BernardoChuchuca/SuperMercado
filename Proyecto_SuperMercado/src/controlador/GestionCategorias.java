@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Categoria;
+//import Modelo.Categoria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
