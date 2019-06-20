@@ -23,22 +23,30 @@ import modelo.Producto;
 public class GestionProductos {
     
     
-   /* public void InsertProductos(Producto producto) {
-         
-    
-        try {
+   public void InsertarProducto(Producto producto) {
+         // java.util.Date utilDate= new java.util.Date();
+        //java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+         try {
             Connection cnx= Conexion.getConnection();
-           PreparedStatement pst=cnx.prepareStatement("INSERT INTO  VET_PRODUCTOS (PRO_ID,"
-                   + "PRO_NOMBRE, PRO_TIPO,PRO_STOCK,PRO_NACIONALIDAD)"
-                    + " VALUES(?,?,?,?,?)"); 
+           PreparedStatement pst=cnx.prepareStatement("INSERT INTO  MER_PRODUCTOS (PRO_ID,"
+                   + "PRO_CODIGO, PRO_NOMBRE, PRO_FECHA_ELABORADO, PRO_FECHA_CADUCIDAD,"
+                   +" PRO_COMPANIA, PRO_PRECIO, PRO_STOCK, PRO_IVA_DISPONIBLE, PRO_DESCUENTO_DISPONIBLE,"
+                   +" MER_CATEGORIAS_CAT_ID, MER_PROVEEDORES_PROV_ID )"
+                   
+                    + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"); 
            pst.setInt(1,producto.getPro_id());
-           pst.setString(2,producto.getNombre());
-           pst.setString(3,producto.getTipo());
-           pst.setInt(4,producto.getStock());
-           pst.setString(5,producto.getNacionalidad());
+           pst.setString(2,producto.getPro_codigo());
+           pst.setString(3,producto.getPro_nombre());
+           pst.setDate(4, producto.getPro_fecha_elaborado());
+           pst.setDate(5,producto.getPro_fecha_caducidad());
+           pst.setString(6,producto.getPro_compania());
+           pst.setDouble(7,producto.getPro_precio());
+           pst.setInt(8,producto.getPro_stock());
+           pst.setString(9,producto.getPro_iva_disponible());
+           pst.setString(10,producto.getPro_descuento_disponible());
+           pst.setInt(11,producto.getProv_id());
+           pst.setInt(12,producto.getCat_id());
          
-          
-          
            pst.executeQuery();
             
         }
@@ -47,8 +55,8 @@ public class GestionProductos {
             System.out.println(ex.getMessage());
             System.out.println("Error en Ingresar datos");
   }
-}*/
-    public ArrayList<Producto> getListProducto(){
+}
+     ArrayList  pública  <  Producto  >   getListProducto () {
         //Producto pro=new Producto();
     ArrayList<Producto> prod=new ArrayList<>();
         try {
