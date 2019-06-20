@@ -76,7 +76,7 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         facfecha = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        valorconsulta = new javax.swing.JTextField();
+        jnumfac = new javax.swing.JTextField();
         sub_f = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
@@ -147,13 +147,13 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         panelfactura2.add(jLabel37);
         jLabel37.setBounds(30, 200, 110, 15);
 
-        valorconsulta.addActionListener(new java.awt.event.ActionListener() {
+        jnumfac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorconsultaActionPerformed(evt);
+                jnumfacActionPerformed(evt);
             }
         });
-        panelfactura2.add(valorconsulta);
-        valorconsulta.setBounds(170, 190, 40, 30);
+        panelfactura2.add(jnumfac);
+        jnumfac.setBounds(170, 190, 40, 30);
         panelfactura2.add(sub_f);
         sub_f.setBounds(480, 450, 90, 30);
 
@@ -356,9 +356,9 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
     } 
    
     
-    private void valorconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorconsultaActionPerformed
+    private void jnumfacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnumfacActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_valorconsultaActionPerformed
+    }//GEN-LAST:event_jnumfacActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -369,7 +369,9 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         //System.out.println(sqlDate);
 
         fac.setFact_id(codigo(getlista()));
+        
         fac.setFact_codigo(codigo(getlistacod()));
+        jnumfac.setText(String.valueOf(fac.getFact_codigo()));
         fac.setFact_fecha(sqlDate);
         //fac.setFact_descuento(5);
         fac.setFact_iva(Ivatotal());
@@ -609,13 +611,13 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jempleado;
+    private javax.swing.JTextField jnumfac;
     private javax.swing.JPanel panelfactura2;
     private javax.swing.JTextField sub_f;
     private javax.swing.JTextField supertotal_f;
     private javax.swing.JTextField tcampo;
     private javax.swing.JTextField tcantidad;
     private javax.swing.JTable tfacturax;
-    private javax.swing.JTextField valorconsulta;
     // End of variables declaration//GEN-END:variables
 
     private Double Ivatotal() {

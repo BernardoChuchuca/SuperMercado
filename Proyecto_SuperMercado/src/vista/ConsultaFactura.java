@@ -10,6 +10,7 @@ import controlador.*;
 import controlador.GestionFacturasDetalle;
 import controlador.GestionPersonas;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Detalle_Factura;
 import modelo.FacDetalle;
@@ -31,6 +32,8 @@ public class ConsultaFactura extends javax.swing.JFrame {
         
         
         initComponents();
+        
+        
     }
 
     /**

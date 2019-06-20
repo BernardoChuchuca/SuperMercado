@@ -119,6 +119,7 @@ public class Ventana extends javax.swing.JFrame {
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
         if(gx.getRol().equals("A")|| gx.getRol().equals("E")){
+            escritorio.remove(ini);
         escritorio.remove(ven_e);
         escritorio.remove(ven_f);
         if(ven.isClosed()){
@@ -144,6 +145,7 @@ public class Ventana extends javax.swing.JFrame {
         if(gx.getRol().equals("A")){
             escritorio.remove(ven);
             escritorio.remove(ven_f);
+             escritorio.remove(ini);
        
        if(ven_e.isClosed()){
             escritorio.remove(ven_e);
@@ -167,6 +169,7 @@ public class Ventana extends javax.swing.JFrame {
         if(gx.getRol().equals("E")){
             escritorio.remove(ven);
             escritorio.remove(ven_e);
+             escritorio.remove(ini);
        
        if(ven_e.isClosed()){
            
