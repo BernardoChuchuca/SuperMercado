@@ -5,12 +5,12 @@
  */
 package Vista;
 
-import Controlador.GestionProductos;
-import Controlador.GestionProveedores;
-import Controlador.GestionCategorias;
-import Modelo.Categoria;
-import Modelo.Producto;
-import Modelo.Proveedor;
+import controlador.GestionProductos;
+import controlador.GestionProveedores;
+import controlador.GestionCategorias;
+import modelo.Categoria;
+import modelo.Producto;
+import modelo.Proveedor;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Random;

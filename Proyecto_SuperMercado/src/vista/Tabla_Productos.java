@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Modelo.Producto;
+import modelo.Producto;
 import java.util.ArrayList;
 import java.sql.Date;
 import javax.swing.table.AbstractTableModel;
