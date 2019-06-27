@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-import Modelo.Producto;
 import Modelo.Proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

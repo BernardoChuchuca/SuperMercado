@@ -6,11 +6,11 @@
 package Vista;
 
 import controlador.GestionProductos;
-import controlador.GestionProveedores;
-import controlador.GestionCategorias;
-import modelo.Categoria;
+import Controlador.GestionProveedores;
+import Controlador.GestionCategorias;
+import Modelo.Categoria;
 import modelo.Producto;
-import modelo.Proveedor;
+import Modelo.Proveedor;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,8 +26,8 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
      */
     public Vent_Productos() {
         initComponents();
-        Llenar();
-        LlenarC();
+        //Llenar();
+        //LlenarC();
     }
 
     /**
@@ -252,17 +252,17 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         producto.setPro_id(numero()); // Cunado se inserta el cliente el id se va a sumar mas 1 con el tamano de la lista
         producto.setPro_codigo(procodigotxt.getText());
         producto.setPro_nombre(pronombretxt.getText());
-        producto.setPro_fecha_elaborado(sqlDate);
-        producto.setPro_fecha_caducidad(sqlDate);
-        producto.setPro_compania(promarcatxt.getText());
-        producto.setPro_precio(Double.parseDouble(propreciotxt.getText()));
+        producto.setPro_fec_elab(sqlDate);
+        producto.setPro_fec_cadu(sqlDate);
+        producto.setPro_marca(promarcatxt.getText());
+        producto.setPro_precio(Integer.parseInt(propreciotxt.getText()));
         producto.setPro_stock(Integer.parseInt(prostocktxt.getText()));
-        producto.setPro_iva_disponible(proivatxt.getText());
-        producto.setPro_descuento_disponible(prodestxt.getText());
+        producto.setPro_iva(proivatxt.getText());
+        producto.setPro_descuento(Double.parseDouble(prodestxt.getText()));
         producto.setProv_id(proveedor.getProv_id());
         producto.setCat_id(categoria.getCat_id());
         
-        new  GestionProductos().InsertarProducto(producto);
+       // new  GestionProductos().InsertarProducto(producto);
         
         
         

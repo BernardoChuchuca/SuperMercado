@@ -70,13 +70,13 @@ public class Tabla_Productos extends AbstractTableModel {
 			pro.setPro_nombre((String) value);
 			break;
 		case 3:
-			pro.setPro_fecha_elaborado((Date) value);
+			pro.setPro_fec_elab((Date) value);
 			break;
                 case 4:
-			pro.setPro_fecha_caducidad((Date) value);
+			pro.setPro_fec_cadu((Date) value);
 			break;
 		case 5:
-			pro.setPro_compania((String) value);
+			pro.setPro_marca((String) value);
 			break; 
                 case 6:
 			pro.setPro_precio((int) value);
@@ -85,10 +85,10 @@ public class Tabla_Productos extends AbstractTableModel {
 			pro.setPro_stock((int) value);
 			break;
 		case 8:
-			pro.setPro_iva_disponible((String) value);
+			pro.setPro_iva((String) value);
 			break;            
                 case 9: 
-                        pro.setPro_descuento_disponible((String)value);
+                        pro.setPro_descuento((int)value);
                         break;
                 case 10:
                         pro.setCat_id((int)value);
@@ -129,19 +129,19 @@ public class Tabla_Productos extends AbstractTableModel {
                 case 2:
 			return pro.getPro_nombre();
 		case 3:
-			return pro.getPro_fecha_elaborado();
+			return pro.getPro_fec_elab();
                 case 4:
-			return pro.getPro_fecha_caducidad();
+			return pro.getPro_fec_cadu();
 		case 5:
-			return pro.getPro_compania();
+			return pro.getPro_marca();
                 case 6:
 			return pro.getPro_precio();
 		case 7:
 			return pro.getPro_stock();
                 case 8:
-			return pro.getPro_iva_disponible();
+			return pro.getPro_iva();
                 case 9:
-                    return pro.getPro_descuento_disponible();
+                    return pro.getPro_descuento();
                 case 10:
                     return pro.getCat_id();
                 case 11:

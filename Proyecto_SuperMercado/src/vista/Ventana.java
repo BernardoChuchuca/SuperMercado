@@ -19,6 +19,7 @@ public class Ventana extends javax.swing.JFrame {
          Vent_Clientes ven=new Vent_Clientes();
          Vent_Empleados ven_e=new Vent_Empleados();
          Inicio ini=new Inicio();
+       
          
          
          Gestion gx;
@@ -89,6 +90,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(jMenu4);
 
         jMenu5.setText("PRODUCTOS");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
         jMenu1.add(jMenu5);
 
         jMenu6.setText("FACTURA");
@@ -128,7 +134,7 @@ public class Ventana extends javax.swing.JFrame {
         }else{
         escritorio.remove(ven);
          escritorio.add(ven);
-        };
+        }
        
         ven.setVisible(true);
         
@@ -153,7 +159,7 @@ public class Ventana extends javax.swing.JFrame {
         }else{
         escritorio.remove(ven_e);
          escritorio.add(ven_e);
-        };
+        }
        
         ven_e.setVisible(true);
         }else {
@@ -178,7 +184,7 @@ public class Ventana extends javax.swing.JFrame {
         }else{
         escritorio.remove(ven_f);
          escritorio.add(ven_f);
-        };
+        }
        
         ven_f.setVisible(true);
         
@@ -188,6 +194,13 @@ public class Ventana extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jMenu6MouseClicked
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        // TODO add your handling code here:
+        
+       
+          
+    }//GEN-LAST:event_jMenu5MouseClicked
       
     /**
      * @param args the command line arguments

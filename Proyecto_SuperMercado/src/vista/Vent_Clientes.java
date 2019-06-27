@@ -333,7 +333,7 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Persona per=new Persona();
-         if(new Gestion().Cedula(jced.getText()) && jced.getText().length()==10){
+        /* if(new Gestion().Cedula(jced.getText()) && jced.getText().length()==10){
         per.setPer_id(codigo(getlista()));
         per.setPer_cedula(jced.getText());
         per.setPer_nombre(jnom.getText());
@@ -351,7 +351,36 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
          }else {
         
             JOptionPane.showMessageDialog(null,"CEDULA INCORRECTA");
+        }*/
+         
+         
+          if(new Gestion().Cedula(jced.getText()) && jced.getText().length()==10){
+            
+        if(!Existe(jced.getText())){
+          per.setPer_id(codigo(getlista()));
+        per.setPer_cedula(jced.getText());
+        per.setPer_nombre(jnom.getText());
+        per.setPer_apellido(jape.getText());
+        per.setPer_direccion(jdir.getText());
+        per.setPer_telefono(jtel.getText());
+        per.setPer_edad(0);
+       
+        per.setEmp_cargo("N");
+        per.setEmp_contrasena("null");
+        per.setEmp_usuario("null");
+        per.setCorreo(jcorr.getText());
+        new GestionPersonas().InsertPersona(per);
+        
+        }  else{
+        JOptionPane.showMessageDialog(null,"PERSONA YA REGISTRADA");
+        }  
+            
+        }else {
+        
+            JOptionPane.showMessageDialog(null,"CEDULA INCORRECTA");
         }
+       
+       
       
         
         
@@ -383,7 +412,7 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         //System.out.println(codigo(getlista()));
-        
+        if(Existe(jced.getText())){
         Persona per=new GestionPersonas().getBuscarCedula(jced.getText());
         
         lcod.setText(String.valueOf(per.getPer_id()));
@@ -396,6 +425,10 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         jdir.setText(per.getPer_direccion());
         jtel.setText(per.getPer_telefono());
         jcorr.setText(per.getCorreo());
+        } else {
+                
+                JOptionPane.showMessageDialog(null,"PERSONA NO EXISTE");
+          }
         
         //jeda.setText(String.valueOf(per.getPer_edad()));
         
@@ -497,5 +530,27 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField lcod;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
+
+public boolean Existe(String cedula){
+    
+        boolean exi=false;
+        ArrayList<Persona>lis=new GestionPersonas().getListPersonas();
+        
+        for (int i = 0; i < lis.size(); i++) {
+            if(lis.get(i).getPer_cedula().equals(cedula)){
+               exi=true;
+               break;
+            
+            }  
+            
+        }
+        
+        
+    
+    return exi;
+    }
+
+
+
 }
 

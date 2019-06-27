@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.Detalle_Factura;
 import modelo.Factura;
+import modelo.Producto;
 
 /**
  *
@@ -110,5 +111,19 @@ public class GestionFacturasDetalle {
             System.out.println("Error en Ingresar datos");
   }
 }
+     
+ public Producto ActualizarStock(int cantidad,int id){
+     
+ Producto pro=new GestionProductos().getBuscarPoductoid(id);
+ int stock=pro.getPro_stock();
+ int stocknuevo= stock-cantidad;
+ 
+ 
+ pro.setPro_stock(stocknuevo);
+ 
+     //System.out.println(stock);
+ 
+ return pro;
+ }    
     
 }

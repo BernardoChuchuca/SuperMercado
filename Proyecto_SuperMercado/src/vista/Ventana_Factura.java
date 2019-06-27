@@ -384,6 +384,8 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         new GestionFactura().InsertaFactura(fac);
         RegistrarDetalle(fac.getFact_id());
         
+        
+        
         //GestionFactura fact=new GestionFactura();
        // fact.getListFactura().get(1).getFact_total_pagar();
         //GestionFacturasDetalle detalle=new GestionFacturasDetalle();
@@ -472,16 +474,17 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        ArrayList<Detalle_Factura>lis=new GestionFacturasDetalle().getListDetalleFactura();
+        ///ArrayList<Detalle_Factura>lis=new GestionFacturasDetalle().getListDetalleFactura();
         
        /* for (int i = 0; i < lis.size(); i++) {
             
             System.out.print(lis.get(i).getValor_unitario()+"|");
         }*/
         
-         System.out.println(tos);
+         //System.out.println(tos);
         
-        
+        Producto pro= new GestionProductos().getBuscarPoductoid(1);
+        System.out.println(pro.getPro_fec_cadu()+"-"+pro.getPro_nombre());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -682,6 +685,11 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
             df.setPro_id(tos.get(i));
             df.setFac_id(idfac);
             new GestionFacturasDetalle().InsertaFacturaDetalle(df);
+            int can=(int) tf.get(i).getCantidad();
+            Producto pro= new GestionFacturasDetalle().ActualizarStock(can,tos.get(i) );
+            System.out.println(pro.getPro_nombre()+"-"+pro.getPro_stock());
+            new GestionProductos().ActualizarProducto(pro);
+            
             
         }
         
