@@ -687,7 +687,7 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
             new GestionFacturasDetalle().InsertaFacturaDetalle(df);
             int can=(int) tf.get(i).getCantidad();
             Producto pro= new GestionFacturasDetalle().ActualizarStock(can,tos.get(i) );
-            System.out.println(pro.getPro_nombre()+"-"+pro.getPro_stock());
+            //System.out.println(pro.getPro_nombre()+"-"+pro.getPro_stock());
             new GestionProductos().ActualizarProducto(pro);
             
             
