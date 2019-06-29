@@ -5,9 +5,12 @@
  */
 package vista;
 
+import com.sun.glass.events.KeyEvent;
 import controlador.Gestion;
 
 import controlador.GestionPersonas;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
@@ -24,6 +27,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
         setLocationRelativeTo(null);
     }
 
@@ -36,64 +40,99 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         tcodigo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         tcon = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        entrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(400, 300));
-        setMinimumSize(new java.awt.Dimension(400, 300));
+        setMaximumSize(new java.awt.Dimension(640, 342));
+        setMinimumSize(new java.awt.Dimension(640, 342));
+        setPreferredSize(new java.awt.Dimension(640, 342));
         getContentPane().setLayout(null);
 
+        jPanel5.setLayout(new java.awt.GridLayout(2, 1));
+
+        jPanel4.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel2.setLayout(new java.awt.GridLayout(2, 1));
+
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("USUARIO :");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(44, 40, 117, 31);
+        jPanel2.add(jLabel1);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CONTRASEÑA :");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(44, 115, 92, 16);
+        jPanel2.add(jLabel2);
 
-        tcodigo.setText("flor");
-        getContentPane().add(tcodigo);
-        tcodigo.setBounds(173, 46, 130, 30);
+        jPanel4.add(jPanel2);
 
-        jButton1.setText("INICIAR");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel3.setLayout(new java.awt.GridLayout(2, 1));
+
+        tcodigo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        tcodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                tcodigoActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+        tcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tcodigoKeyTyped(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(123, 180, 90, 25);
+        jPanel3.add(tcodigo);
 
-        tcon.setText("ft123");
-        getContentPane().add(tcon);
-        tcon.setBounds(173, 113, 123, 30);
+        tcon.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        tcon.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tconActionPerformed(evt);
+            }
+        });
+        tcon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tconKeyTyped(evt);
+            }
+        });
+        jPanel3.add(tcon);
 
-        jLabel3.setBackground(new java.awt.Color(102, 255, 255));
-        jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 400, 300);
+        jPanel4.add(jPanel3);
+
+        jPanel5.add(jPanel4);
+
+        jPanel1.setLayout(new java.awt.GridLayout());
+
+        entrar.setText("INICIAR");
+        entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(entrar);
+
+        jPanel5.add(jPanel1);
+
+        getContentPane().add(jPanel5);
+        jPanel5.setBounds(30, 40, 550, 200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         // TODO add your handling code here:
         
         GestionPersonas gc=new GestionPersonas();
@@ -139,12 +178,43 @@ public class Login extends javax.swing.JFrame {
             } else{
                 JOptionPane.showMessageDialog(null,"DATOS INCORRECTOS");
             }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_entrarActionPerformed
 
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void tcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcodigoActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_tcodigoActionPerformed
+
+    private void tconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tconActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tconActionPerformed
+
+    private void tcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tcodigoKeyTyped
+        char precionar=evt.getKeyChar();
         
-    }//GEN-LAST:event_jButton1KeyPressed
+        if(precionar==KeyEvent.VK_ENTER){
+        
+           
+            
+            entrar.doClick();
+            
+             
+        }
+        
+        
+    }//GEN-LAST:event_tcodigoKeyTyped
+
+    private void tconKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tconKeyTyped
+       char precionar=evt.getKeyChar();
+        
+        if(precionar==KeyEvent.VK_ENTER){
+        
+           
+            
+            entrar.doClick();
+            
+            
+        }
+    }//GEN-LAST:event_tconKeyTyped
 
     /**
      * @param args the command line arguments
@@ -182,11 +252,16 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton entrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField tcodigo;
     private javax.swing.JPasswordField tcon;
     // End of variables declaration//GEN-END:variables
+
 }

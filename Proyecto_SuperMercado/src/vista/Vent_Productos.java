@@ -78,9 +78,9 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 613));
-        setMinimumSize(new java.awt.Dimension(1200, 613));
-        setPreferredSize(new java.awt.Dimension(1200, 613));
+        setMaximumSize(new java.awt.Dimension(1342, 685));
+        setMinimumSize(new java.awt.Dimension(1342, 685));
+        setPreferredSize(new java.awt.Dimension(1342, 685));
         getContentPane().setLayout(null);
 
         jButton1.setText("Buscar Producto");

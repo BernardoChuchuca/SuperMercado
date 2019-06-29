@@ -63,7 +63,9 @@ public class Ventana extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 51, 0));
-        setMinimumSize(new java.awt.Dimension(1300, 700));
+        setMaximumSize(new java.awt.Dimension(1363, 863));
+        setMinimumSize(new java.awt.Dimension(1363, 863));
+        setPreferredSize(new java.awt.Dimension(1363, 863));
         getContentPane().setLayout(null);
 
         jMenu1.setText("GESTION");
@@ -151,7 +153,7 @@ public class Ventana extends javax.swing.JFrame {
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
         
-        if(gx.getRol().equals("A")){
+        if(gx.getRol().equals("A") ){
             escritorio.remove(ven);
             escritorio.remove(ven_f);
              escritorio.remove(ini);
@@ -175,7 +177,7 @@ public class Ventana extends javax.swing.JFrame {
     private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
         // TODO add your handling code here:
         //ven_f=new Ventana_Factura(gx);
-        if(gx.getRol().equals("E")){
+        if(gx.getRol().equals("E") || gx.getRol().equals("A")){
             escritorio.remove(ven);
             escritorio.remove(ven_e);
              escritorio.remove(ini);

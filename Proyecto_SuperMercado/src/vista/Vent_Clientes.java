@@ -38,89 +38,62 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lcod = new javax.swing.JTextField();
         jced = new javax.swing.JTextField();
         jnom = new javax.swing.JTextField();
         jape = new javax.swing.JTextField();
-        jtel = new javax.swing.JTextField();
+        jeda = new javax.swing.JTextField();
         jcar = new javax.swing.JTextField();
-        jdir = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jcorr = new javax.swing.JTextField();
         jusu = new javax.swing.JTextField();
         jcont = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        lcod = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jeda = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jcorr = new javax.swing.JTextField();
+        jdir = new javax.swing.JTextField();
+        jtel = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setAlignmentX(0.2F);
         setAlignmentY(0.2F);
-        setMaximumSize(new java.awt.Dimension(1200, 700));
-        setMinimumSize(new java.awt.Dimension(1200, 700));
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setMaximumSize(new java.awt.Dimension(1342, 685));
+        setMinimumSize(new java.awt.Dimension(1342, 685));
+        setPreferredSize(new java.awt.Dimension(1342, 685));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("CEDULA :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 85, 58, 46));
+        jScrollPane1.setBackground(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jScrollPane1.setOpaque(false);
 
-        jLabel2.setText("NOMBRE :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 143, 58, 23));
-
-        jLabel3.setText("APELLIDO :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 185, 58, 23));
-
-        jLabel4.setText("USUARIO :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 364, 67, 23));
-
-        jLabel5.setText("TELEFONO:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 479, 58, 23));
-
-        jLabel6.setText("CARGO : ");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 285, -1, -1));
-
-        jced.setAlignmentX(0.2F);
-        jced.setAlignmentY(0.2F);
-        getContentPane().add(jced, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 99, 119, -1));
-
-        jnom.setAlignmentX(0.2F);
-        jnom.setAlignmentY(0.2F);
-        getContentPane().add(jnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 145, 119, -1));
-
-        jape.setAlignmentX(0.2F);
-        jape.setAlignmentY(0.2F);
-        getContentPane().add(jape, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 187, 119, -1));
-
-        jtel.setAlignmentX(0.2F);
-        jtel.setAlignmentY(0.2F);
-        getContentPane().add(jtel, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 481, 128, -1));
-
-        jcar.setAlignmentX(0.2F);
-        jcar.setAlignmentY(0.2F);
-        getContentPane().add(jcar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, -1));
-
-        jdir.setAlignmentX(0.2F);
-        jdir.setAlignmentY(0.2F);
-        getContentPane().add(jdir, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 439, 128, -1));
-
+        tabla.setBackground(new java.awt.Color(0, 0, 0));
+        tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabla.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        tabla.setForeground(new java.awt.Color(255, 255, 255));
         tabla.setModel(new Tabla_Clientes());
+        tabla.setGridColor(new java.awt.Color(153, 153, 153));
+        tabla.setOpaque(false);
         tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaMouseClicked(evt);
@@ -128,80 +101,202 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tabla);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 25, 827, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 25, 860, 520));
 
-        jButton1.setText("ACTUALIZAR");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 478, -1, -1));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 5));
 
-        jButton2.setText("BUSCAR");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 478, -1, -1));
-
+        jButton3.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jButton3.setText("REGISTRAR");
+        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 478, -1, -1));
+        jPanel1.add(jButton3);
 
-        jButton4.setText("ELIMINAR");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jButton1.setText("ACTUALIZAR");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setOpaque(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1051, 478, -1, -1));
+        jPanel1.add(jButton1);
 
-        jLabel7.setText("CONTRASEÑA :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 405, 67, 23));
-
-        jLabel8.setText("DIRECCION :");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 437, 67, 23));
-        getContentPane().add(jusu, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 366, 123, -1));
-        getContentPane().add(jcont, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 407, 123, -1));
-
-        jButton5.setText("lLISTAR");
+        jButton5.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jButton5.setText("LISTAR");
+        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setOpaque(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(961, 478, -1, -1));
+        jPanel1.add(jButton5);
 
+        jButton4.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jButton4.setText("ELIMINAR");
+        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setOpaque(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+
+        jButton2.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jButton2.setText("BUSCAR");
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setOpaque(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 1330, 60));
+
+        jPanel4.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel2.setLayout(new java.awt.GridLayout(11, 1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("CODIGO :");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 56, -1, -1));
+        jPanel2.add(jLabel9);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("CEDULA :");
+        jPanel2.add(jLabel1);
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("NOMBRE :");
+        jPanel2.add(jLabel2);
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("APELLIDO :");
+        jPanel2.add(jLabel3);
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("EDAD :");
+        jPanel2.add(jLabel10);
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("CARGO : ");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(jLabel6);
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("CORREO :");
+        jPanel2.add(jLabel11);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("USUARIO :");
+        jPanel2.add(jLabel4);
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("CONTRASEÑA :");
+        jPanel2.add(jLabel7);
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("TELEFONO:");
+        jPanel2.add(jLabel5);
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("DIRECCION :");
+        jPanel2.add(jLabel8);
+
+        jPanel4.add(jPanel2);
+
+        jPanel3.setLayout(new java.awt.GridLayout(11, 1));
 
         lcod.setEditable(false);
-        getContentPane().add(lcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 54, 38, -1));
+        lcod.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        lcod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(lcod);
 
-        jLabel10.setText("EDAD :");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 228, -1, -1));
+        jced.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jced.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jced.setAlignmentX(0.2F);
+        jced.setAlignmentY(0.2F);
+        jPanel3.add(jced);
 
+        jnom.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jnom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jnom.setAlignmentX(0.2F);
+        jnom.setAlignmentY(0.2F);
+        jPanel3.add(jnom);
+
+        jape.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jape.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jape.setAlignmentX(0.2F);
+        jape.setAlignmentY(0.2F);
+        jPanel3.add(jape);
+
+        jeda.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jeda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jeda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jedaMouseClicked(evt);
             }
         });
-        getContentPane().add(jeda, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 226, 119, -1));
+        jPanel3.add(jeda);
 
-        jLabel11.setText("CORREO :");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 329, -1, -1));
-        getContentPane().add(jcorr, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 327, 128, -1));
+        jcar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jcar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jcar.setAlignmentX(0.2F);
+        jcar.setAlignmentY(0.2F);
+        jPanel3.add(jcar);
+
+        jcorr.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jcorr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(jcorr);
+
+        jusu.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jusu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(jusu);
+
+        jcont.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jcont.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(jcont);
+
+        jdir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jdir.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jdir.setAlignmentX(0.2F);
+        jdir.setAlignmentY(0.2F);
+        jPanel3.add(jdir);
+
+        jtel.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jtel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtel.setAlignmentX(0.2F);
+        jtel.setAlignmentY(0.2F);
+        jPanel3.add(jtel);
+
+        jPanel4.add(jPanel3);
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 440, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -403,6 +498,10 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jape;
     private javax.swing.JTextField jcar;
