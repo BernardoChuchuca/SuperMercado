@@ -68,7 +68,8 @@ public class Vent_Empleados extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jcorr = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setAlignmentX(0.2F);
         setAlignmentY(0.2F);
         setMaximumSize(new java.awt.Dimension(1200, 700));
@@ -345,6 +346,7 @@ public class Vent_Empleados extends javax.swing.JInternalFrame {
         per.setEmp_usuario(jusu.getText());
         per.setCorreo(jcorr.getText());
          new GestionPersonas().InsertPersona(per);
+         JOptionPane.showMessageDialog(null,"REGISTRO CORRECTO");
         
         }  else{
         JOptionPane.showMessageDialog(null,"PERSONA YA REGISTRADA");
@@ -449,6 +451,7 @@ public class Vent_Empleados extends javax.swing.JInternalFrame {
         
         
         new GestionPersonas().ActualizarPersona(per);
+        JOptionPane.showMessageDialog(null,"ACTULIZACION CORRECTA");
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -456,6 +459,7 @@ public class Vent_Empleados extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        
         new GestionPersonas().EliminarPersona(jced.getText());
+        JOptionPane.showMessageDialog(null,"ELIMINACION CORRECTA");
         
         
     }//GEN-LAST:event_jButton4ActionPerformed

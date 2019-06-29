@@ -61,6 +61,8 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA :");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(44, 115, 92, 16);
+
+        tcodigo.setText("flor");
         getContentPane().add(tcodigo);
         tcodigo.setBounds(173, 46, 130, 30);
 
@@ -78,6 +80,8 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(123, 180, 90, 25);
+
+        tcon.setText("ft123");
         getContentPane().add(tcon);
         tcon.setBounds(173, 113, 123, 30);
 

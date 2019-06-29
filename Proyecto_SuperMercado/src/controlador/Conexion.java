@@ -47,5 +47,18 @@ public class Conexion {
                 
                 
             }
+       
+       
+       public static void close(Connection con){
+       
+           try {
+               con.close();
+               
+           } catch (Exception e) {
+           
+           }
+       
+       
+       }
     
 }

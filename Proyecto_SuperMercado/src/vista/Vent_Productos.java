@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package vista;
 
 import controlador.GestionProductos;
 import Controlador.GestionProveedores;
@@ -13,7 +13,9 @@ import modelo.Producto;
 import Modelo.Proveedor;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,8 +28,8 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
      */
     public Vent_Productos() {
         initComponents();
-        //Llenar();
-        //LlenarC();
+       Llenar();
+        LlenarC();
     }
 
     /**
@@ -57,9 +59,6 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         propreciotxt = new javax.swing.JTextField();
         prostocktxt = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablapro = new javax.swing.JTable();
         provBox = new javax.swing.JComboBox<>();
         bingresarP = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -69,20 +68,29 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         bListarP = new javax.swing.JButton();
         catBox = new javax.swing.JComboBox<>();
         actualizarP = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablapro = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jLabel12 = new javax.swing.JLabel();
+        proidprov = new javax.swing.JTextField();
+        proidcat = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1200, 613));
         setMinimumSize(new java.awt.Dimension(1200, 613));
         setPreferredSize(new java.awt.Dimension(1200, 613));
         getContentPane().setLayout(null);
 
         jButton1.setText("Buscar Producto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(204, 42, 125, 25);
+        jButton1.setBounds(204, 42, 115, 25);
 
         proidtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,47 +98,47 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(proidtxt);
-        proidtxt.setBounds(21, 43, 149, 22);
+        proidtxt.setBounds(21, 43, 70, 30);
 
         jLabel1.setText("Codigo:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(21, 95, 44, 16);
+        jLabel1.setBounds(21, 90, 50, 30);
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(21, 135, 50, 16);
+        jLabel2.setBounds(21, 130, 60, 30);
 
         jLabel3.setText("Fecha de Elaboracion:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(21, 175, 127, 16);
+        jLabel3.setBounds(21, 175, 120, 30);
 
         jLabel4.setText("Fecha de Caducidad:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(21, 215, 120, 16);
+        jLabel4.setBounds(21, 215, 110, 30);
 
         jLabel5.setText("Marca:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(21, 255, 40, 16);
+        jLabel5.setBounds(20, 445, 40, 20);
 
         jLabel6.setText("Precio:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(21, 295, 40, 16);
+        jLabel6.setBounds(20, 270, 33, 15);
 
         jLabel7.setText("Stock:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(21, 335, 36, 16);
+        jLabel7.setBounds(20, 320, 40, 20);
         getContentPane().add(jLabel8);
         jLabel8.setBounds(21, 372, 0, 0);
         getContentPane().add(procodigotxt);
-        procodigotxt.setBounds(180, 92, 149, 22);
+        procodigotxt.setBounds(180, 92, 149, 30);
         getContentPane().add(pronombretxt);
-        pronombretxt.setBounds(180, 132, 149, 22);
+        pronombretxt.setBounds(180, 132, 149, 30);
         getContentPane().add(profechaelatxt);
-        profechaelatxt.setBounds(180, 172, 149, 22);
+        profechaelatxt.setBounds(180, 172, 149, 30);
         getContentPane().add(profechacadtxt);
-        profechacadtxt.setBounds(180, 212, 149, 22);
+        profechacadtxt.setBounds(180, 212, 149, 30);
         getContentPane().add(promarcatxt);
-        promarcatxt.setBounds(180, 252, 149, 22);
+        promarcatxt.setBounds(180, 440, 149, 30);
 
         propreciotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,26 +146,11 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(propreciotxt);
-        propreciotxt.setBounds(180, 292, 149, 22);
+        propreciotxt.setBounds(180, 260, 149, 30);
         getContentPane().add(prostocktxt);
-        prostocktxt.setBounds(180, 332, 149, 22);
+        prostocktxt.setBounds(180, 300, 149, 30);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(0, 13, 1090, 10);
-        getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(0, 537, 1090, 10);
-
-        jScrollPane1.setMaximumSize(null);
-
-        tablapro.setModel(new Tabla_Productos());
-        tablapro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaproMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tablapro);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(350, 40, 830, 402);
 
         provBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,7 +163,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(provBox);
-        provBox.setBounds(380, 510, 330, 22);
+        provBox.setBounds(180, 490, 330, 24);
 
         bingresarP.setText("Ingresar");
         bingresarP.addActionListener(new java.awt.event.ActionListener() {
@@ -179,19 +172,19 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(bingresarP);
-        bingresarP.setBounds(20, 480, 100, 25);
+        bingresarP.setBounds(580, 500, 100, 25);
 
         jLabel10.setText("IVA:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(30, 380, 25, 16);
+        jLabel10.setBounds(20, 360, 40, 20);
         getContentPane().add(proivatxt);
-        proivatxt.setBounds(180, 380, 150, 22);
+        proivatxt.setBounds(180, 350, 150, 30);
 
         jLabel11.setText("Descuento");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(10, 440, 70, 16);
+        jLabel11.setBounds(10, 400, 70, 20);
         getContentPane().add(prodestxt);
-        prodestxt.setBounds(180, 430, 140, 22);
+        prodestxt.setBounds(180, 400, 140, 30);
 
         bListarP.setText("Listar");
         bListarP.addActionListener(new java.awt.event.ActionListener() {
@@ -200,10 +193,20 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(bListarP);
-        bListarP.setBounds(150, 480, 63, 25);
+        bListarP.setBounds(710, 500, 61, 25);
 
+        catBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                catBoxMouseClicked(evt);
+            }
+        });
+        catBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                catBoxActionPerformed(evt);
+            }
+        });
         getContentPane().add(catBox);
-        catBox.setBounds(770, 520, 350, 22);
+        catBox.setBounds(180, 530, 330, 24);
 
         actualizarP.setText("Actualizar");
         actualizarP.addActionListener(new java.awt.event.ActionListener() {
@@ -212,20 +215,39 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(actualizarP);
-        actualizarP.setBounds(240, 480, 100, 25);
+        actualizarP.setBounds(800, 500, 100, 25);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PlaR1.png"))); // NOI18N
-        jLabel9.setText("jLabel9");
+        tablapro.setModel(new Vista.Tabla_Productos());
+        tablapro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaproMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablapro);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(360, 70, 830, 403);
+
+        jLabel9.setText("Proveedor :");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(-10, 0, 1190, 610);
+        jLabel9.setBounds(20, 480, 70, 30);
 
-        jMenu1.setText("Listar");
-        jMenuBar1.add(jMenu1);
+        jLabel12.setText("Categoria :");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(20, 530, 70, 20);
+        getContentPane().add(proidprov);
+        proidprov.setBounds(100, 490, 40, 30);
+        getContentPane().add(proidcat);
+        proidcat.setBounds(100, 530, 40, 30);
 
-        jMenu2.setText("Ayuda");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        jButton2.setText("ELIMINAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(923, 500, 90, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,6 +258,8 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
 
     private void provBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provBoxMouseClicked
        
+       
+        
     }//GEN-LAST:event_provBoxMouseClicked
 
     private void bingresarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bingresarPActionPerformed
@@ -243,31 +267,35 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         //Ingresar
         Producto producto =  new  Producto();
         java.util.Date utilDate= new java.util.Date();
+        java.util.Date utilDate1= new java.util.Date();
+        utilDate=Date.valueOf(profechacadtxt.getText());
+        utilDate1=Date.valueOf(profechaelatxt.getText());
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        java.sql.Date sqlDate1 = new java.sql.Date(utilDate1.getTime());
         
-        Proveedor proveedor= new GestionProveedores().getBuscarProveedores((String.valueOf(provBox.getSelectedItem())));
-        Categoria categoria= new GestionCategorias().getBuscarCategoriaNombre((String.valueOf(catBox.getSelectedItem())));
-        System.out.println(proveedor.getProv_id());
-        System.out.println(categoria.getCat_id());
+       // Proveedor proveedor= new GestionProveedores().getBuscarProveedores((String.valueOf(provBox.getSelectedItem())));
+       // Categoria categoria= new GestionCategorias().getBuscarCategoriaNombre((String.valueOf(catBox.getSelectedItem())));
+      
         producto.setPro_id(numero()); // Cunado se inserta el cliente el id se va a sumar mas 1 con el tamano de la lista
         producto.setPro_codigo(procodigotxt.getText());
         producto.setPro_nombre(pronombretxt.getText());
-        producto.setPro_fec_elab(sqlDate);
         producto.setPro_fec_cadu(sqlDate);
+        producto.setPro_fec_elab(sqlDate1);
         producto.setPro_marca(promarcatxt.getText());
         producto.setPro_precio(Integer.parseInt(propreciotxt.getText()));
         producto.setPro_stock(Integer.parseInt(prostocktxt.getText()));
         producto.setPro_iva(proivatxt.getText());
         producto.setPro_descuento(Double.parseDouble(prodestxt.getText()));
-        producto.setProv_id(proveedor.getProv_id());
-        producto.setCat_id(categoria.getCat_id());
+        producto.setProv_id(Integer.parseInt(proidprov.getText()));
+        producto.setCat_id(Integer.parseInt(proidcat.getText()));
         
-       // new  GestionProductos().InsertarProducto(producto);
+        new  GestionProductos().InsertProductos(producto);
         
         
         
         proidtxt.setText( String.valueOf(producto.getPro_id()));
-        tablapro.setModel(new Tabla_Productos(new GestionProductos().getListProducto()));
+        JOptionPane.showMessageDialog(null,"PRODUCTO REGISTRADO ");
+        //tablapro.setModel(new Tabla_Productos(new GestionProductos().getListProducto()));
         
     }//GEN-LAST:event_bingresarPActionPerformed
 
@@ -276,12 +304,53 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_propreciotxtActionPerformed
 
     private void bListarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListarPActionPerformed
-        // TODO add your handling code here:
-        tablapro.setModel(new Tabla_Productos(new GestionProductos().getListProducto()));
+        // TODO add your handling code here
+        
+        
+        tablapro.setModel(new Vista.Tabla_Productos(new GestionProductos().getListProducto()));
+        
+        
     }//GEN-LAST:event_bListarPActionPerformed
+
+    private void provBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provBoxActionPerformed
+        // TODO add your handling code here:
+         Proveedor proveedor= new GestionProveedores().getBuscarProveedores((String.valueOf(provBox.getSelectedItem())));
+        proidprov.setText(String.valueOf(proveedor.getProv_id()));
+    }//GEN-LAST:event_provBoxActionPerformed
+
+    private void actualizarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPActionPerformed
+        // TODO add your handling code here:
+         java.util.Date utilDate= new java.util.Date();
+        java.util.Date utilDate1= new java.util.Date();
+        utilDate=Date.valueOf(profechacadtxt.getText());
+        utilDate1=Date.valueOf(profechaelatxt.getText());
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        java.sql.Date sqlDate1 = new java.sql.Date(utilDate1.getTime());
+        Producto producto=new Producto();
+                
+        producto.setPro_id(Integer.parseInt(proidtxt.getText())); // Cunado se inserta el cliente el id se va a sumar mas 1 con el tamano de la lista
+        producto.setPro_codigo(procodigotxt.getText());
+        producto.setPro_nombre(pronombretxt.getText());
+        producto.setPro_fec_cadu(sqlDate);
+        producto.setPro_fec_elab(sqlDate1);
+        producto.setPro_marca(promarcatxt.getText());
+        producto.setPro_precio(Integer.parseInt(propreciotxt.getText()));
+        producto.setPro_stock(Integer.parseInt(prostocktxt.getText()));
+        producto.setPro_iva(proivatxt.getText());
+        producto.setPro_descuento(Double.parseDouble(prodestxt.getText()));
+        producto.setProv_id(Integer.parseInt(proidprov.getText()));
+        producto.setCat_id(Integer.parseInt(proidcat.getText()));
+        
+        new GestionProductos().ActualizarProducto(producto);
+         JOptionPane.showMessageDialog(null,"PRODUCTO ACTUALIZADO ");
+        
+        
+        //System.out.println(new GestionProveedores().getListProveedor().get(0).getProv_nombre_empresa());
+    }//GEN-LAST:event_actualizarPActionPerformed
 
     private void tablaproMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproMouseClicked
         // TODO add your handling code here:
+        
         proidtxt.setText((String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 0))));
         procodigotxt.setText((String)tablapro.getValueAt(tablapro.getSelectedRow(), 1));
         pronombretxt.setText((String) tablapro.getValueAt(tablapro.getSelectedRow(),2));
@@ -291,17 +360,36 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         propreciotxt.setText((String.valueOf (tablapro.getValueAt(tablapro.getSelectedRow(),6))));
         prostocktxt.setText((String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 7))));
         proivatxt.setText((String) tablapro.getValueAt(tablapro.getSelectedRow(),8));
-        prodestxt.setText((String)tablapro.getValueAt(tablapro.getSelectedRow(), 9));
-        
+        prodestxt.setText(String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 9)));
+        proidcat.setText(String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 10)));
+        proidprov.setText(String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 11)));
     }//GEN-LAST:event_tablaproMouseClicked
 
-    private void provBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provBoxActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_provBoxActionPerformed
+        
+        pronombretxt.setText(new GestionProductos().getBuscarPoductoid(1).getPro_nombre());
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void actualizarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPActionPerformed
+    private void catBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catBoxMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_actualizarPActionPerformed
+        
+        
+    }//GEN-LAST:event_catBoxMouseClicked
+
+    private void catBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catBoxActionPerformed
+        // TODO add your handling code here:
+         Categoria categoria= new GestionCategorias().getBuscarCategoriaNombre((String.valueOf(catBox.getSelectedItem())));
+         proidcat.setText(String.valueOf(categoria.getCat_id()));
+    }//GEN-LAST:event_catBoxActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         new GestionProductos().EliminarProducto(Integer.parseInt(proidtxt.getText()));
+        JOptionPane.showMessageDialog(null,"PRODUCTO ELINADO");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void Llenar(){
          // TODO add your handling code here:
@@ -330,9 +418,11 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
     private javax.swing.JButton bingresarP;
     private javax.swing.JComboBox<String> catBox;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -341,16 +431,14 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField procodigotxt;
     private javax.swing.JTextField prodestxt;
     private javax.swing.JTextField profechacadtxt;
     private javax.swing.JTextField profechaelatxt;
+    private javax.swing.JTextField proidcat;
+    private javax.swing.JTextField proidprov;
     private javax.swing.JTextField proidtxt;
     private javax.swing.JTextField proivatxt;
     private javax.swing.JTextField promarcatxt;

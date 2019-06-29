@@ -22,8 +22,9 @@ public class GestionFactura {
     public ArrayList<Factura> getListFactura(){
         
     ArrayList<Factura> os=new ArrayList<>();
+    Connection ctx=null;
         try {
-            Connection ctx=Conexion.getConnection();
+            ctx=Conexion.getConnection();
             Statement st=ctx.createStatement();
             ResultSet rs=st.executeQuery("SELECT *"
                     + " FROM MER_FACTURAS_CABECERAS ");
@@ -49,6 +50,10 @@ public class GestionFactura {
              System.out.println(ex.getMessage());
              
             System.out.println("Error en Listado");
+        }finally{
+        Conexion.close(ctx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return os;
     }
@@ -56,8 +61,9 @@ public class GestionFactura {
      public ArrayList<Factura> getListFacturaCliente(String id ){
         
     ArrayList<Factura> os=new ArrayList<>();
+    Connection ctx=null;
         try {
-            Connection ctx=Conexion.getConnection();
+            ctx=Conexion.getConnection();
             Statement st=ctx.createStatement();
             ResultSet rs=st.executeQuery("SELECT *"
                     + " FROM MER_FACTURAS_CABECERAS WHERE MER_PERSONAS_PER_ID1 = '"+id+"'");
@@ -83,15 +89,19 @@ public class GestionFactura {
              System.out.println(ex.getMessage());
              
             System.out.println("Error en Listado");
+        }finally{
+        Conexion.close(ctx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return os;
     }
     
      public void InsertaFactura(Factura fac) {
-         
+          Connection cnx=null;
     
         try {
-            Connection cnx= Conexion.getConnection();
+           cnx= Conexion.getConnection();
            PreparedStatement pst=cnx.prepareStatement("INSERT INTO MER_FACTURAS_CABECERAS (FACT_ID,"
                    + " FACT_CODIGO, FACT_FECHA, FACT_IVA, FACT_SUBTOTAL,"
                    + " FACT_TOTAL_PAGAR, FACT_ESTADO, MER_PERSONAS_PER_ID, MER_PERSONAS_PER_ID1 )"
@@ -117,7 +127,11 @@ public class GestionFactura {
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Ingresar datos");
-  }
+  }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
+        }
 }
      
   /*    public void ActualizarEmpleado(Empleado personal){

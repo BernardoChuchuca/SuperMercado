@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class Tabla_Productos extends AbstractTableModel {
     public String[] columnas = {"Id","Codigo","Nombre","Fecha Ela","Fecha Cad","Compañia","Precio","Stock","Iva","Descuento","Categoria","Proveedor"};//array de las columnas con el titulo del contenido
-	public Class[] columnasTipos = {Integer.class, String.class,String.class,Date.class,Date.class,String.class,Integer.class,Integer.class,String.class,String.class,Integer.class, Integer.class};//tipo de dato a trbajar
+	public Class[] columnasTipos = {Integer.class, String.class,String.class,Date.class,Date.class,String.class,Integer.class,Integer.class,String.class,Double.class,Integer.class, Integer.class};//tipo de dato a trbajar
 	private ArrayList<Producto> listaProducto = new ArrayList<>();//array list de tipo medico
 
 	/**
@@ -88,7 +88,7 @@ public class Tabla_Productos extends AbstractTableModel {
 			pro.setPro_iva((String) value);
 			break;            
                 case 9: 
-                        pro.setPro_descuento((int)value);
+                        pro.setPro_descuento((double)value);
                         break;
                 case 10:
                         pro.setCat_id((int)value);

@@ -7,12 +7,14 @@ package Controlador;
 
 //import Modelo.Categoria;
 import Modelo.Categoria;
+import controlador.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -22,10 +24,10 @@ import java.util.ArrayList;
 public class GestionCategorias {
     
     public void InsertarCategorias(Categoria categoria) {
-         
+         Connection cnx=null;
     
         try {
-            Connection cnx= Conexion.getConnection();
+            cnx= Conexion.getConnection();
            PreparedStatement pst=cnx.prepareStatement("INSERT INTO  MER_CATEGORIAS (CAT_ID,"
                    + "CAT_NOMBRE)" //PRO_TIPO,PRO_STOCK,PRO_NACIONALIDAD)"
                     + " VALUES(?,?)"); 
@@ -44,15 +46,20 @@ public class GestionCategorias {
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Ingresar datos");
-  }
+       }finally{
+        Conexion.close(cnx);
+        System.err.println("CONEXION CERRADA");
+            
+        }
 }
     public ArrayList<Categoria> getListCategoria(){
         //Producto pro=new Producto();
     ArrayList<Categoria> cate=new ArrayList<>();
+    Connection ctx=null;
         try {
-            Connection ctx=Conexion.getConnection();
+             ctx=Conexion.getConnection();
             Statement st=ctx.createStatement();
-            ResultSet rs=st.executeQuery("SELECT *"
+            ResultSet rs=st.executeQuery("SELECT * "
                     + " FROM MER_CATEGORIAS ");
             while(rs.next()){
             Categoria cat=new Categoria();
@@ -70,14 +77,20 @@ public class GestionCategorias {
              System.out.println(ex.getMessage());
              
             System.out.println("Error en Listado");
+       }finally{
+        Conexion.close(ctx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return cate;
 }
     
     
     public void ActualizarCategoria(Categoria categoria){
+        
+         Connection cnx=null;
         try {
-            Connection cnx = Conexion.getConnection();
+             cnx = Conexion.getConnection();
             PreparedStatement pst = cnx.prepareStatement(" UPDATE MER_CATEGORIAS SET CAT_ID=?,"
                    + "CAT_NOMBRE=? WHERE CAT_ID= '"+categoria.getCat_id()+"'");
             
@@ -91,13 +104,18 @@ public class GestionCategorias {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Ingresar datos");
+        }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
         }
      }
      
      public Categoria getBuscarCategoria(int catnom){
       Categoria cat=null;
+      Connection cnx=null;
        try {
-            Connection cnx = Conexion.getConnection();
+             cnx = Conexion.getConnection();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery("SELECT * "
                     + "   FROM MER_CATEGORIAS WHERE CAT_NOMBRE = '"+catnom+"'");
@@ -116,13 +134,18 @@ public class GestionCategorias {
             System.out.println(e.getMessage());
             
             System.out.println("Error en buscar");
+        }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return cat;
     }
      
      public void EliminarCategoria(int catId){
+         Connection cnx=null;
         try {
-            Connection cnx = Conexion.getConnection();
+             cnx = Conexion.getConnection();
             PreparedStatement pst = cnx.prepareStatement("DELETE FROM MER_CATEGORIAS  "
                     + " WHERE CAT_ID=?");
             pst.setInt(1,catId);
@@ -130,14 +153,19 @@ public class GestionCategorias {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Eliminar datos");
+        }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
         }
      }
      
      
      public Categoria getBuscarCategoriaNombre(String catId){
       Categoria cat=null;
+      Connection cnx=null;
        try {
-            Connection cnx = Conexion.getConnection();
+            cnx = Conexion.getConnection();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery("SELECT * "
                     + "   FROM MER_CATEGORIAS WHERE  CAT_NOMBRE = '"+catId+"'");
@@ -156,6 +184,10 @@ public class GestionCategorias {
             System.out.println(e.getMessage());
             
             System.out.println("Error en buscar");
+      }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return cat;
     }

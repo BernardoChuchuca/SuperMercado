@@ -24,8 +24,9 @@ public class GestionFacturasDetalle {
     public ArrayList<Detalle_Factura> getListDetalleFactura(){
         
     ArrayList<Detalle_Factura> os=new ArrayList<>();
+    Connection ctx=null;
         try {
-            Connection ctx=Conexion.getConnection();
+            ctx=Conexion.getConnection();
             Statement st=ctx.createStatement();
             ResultSet rs=st.executeQuery("SELECT *"
                     + " FROM MER_FACTURAS_DETALLES");
@@ -48,6 +49,10 @@ public class GestionFacturasDetalle {
              System.out.println(ex.getMessage());
              
             System.out.println("Error en Listado");
+        }finally{
+        Conexion.close(ctx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return os;
     }
@@ -55,8 +60,9 @@ public class GestionFacturasDetalle {
      public ArrayList<Detalle_Factura> getListDetalleFacturaid(int id){
         
     ArrayList<Detalle_Factura> os=new ArrayList<>();
+    Connection ctx=null;
         try {
-            Connection ctx=Conexion.getConnection();
+            ctx=Conexion.getConnection();
             Statement st=ctx.createStatement();
             ResultSet rs=st.executeQuery("SELECT *"
                     + " FROM MER_FACTURAS_DETALLES WHERE MER_FACTURAS_CABECERAS_FACT_ID = '"+id+"'");
@@ -79,6 +85,10 @@ public class GestionFacturasDetalle {
              System.out.println(ex.getMessage());
              
             System.out.println("Error en Listado");
+        }finally{
+        Conexion.close(ctx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return os;
     }
@@ -86,9 +96,9 @@ public class GestionFacturasDetalle {
      
      public void InsertaFacturaDetalle(Detalle_Factura detfac) {
          
-    
+       Connection cnx=null;
         try {
-            Connection cnx= Conexion.getConnection();
+            cnx= Conexion.getConnection();
            PreparedStatement pst=cnx.prepareStatement("INSERT INTO MER_FACTURAS_DETALLES ( FDET_ID,"
                    + " FDET_CANTIDAD, FDET_PRECIO, MER_FACTURAS_CABECERAS_FACT_ID ,MER_PRODUCTOS_PRO_ID )"
                     + " VALUES(?,?,?,?,?)"); 
@@ -109,7 +119,11 @@ public class GestionFacturasDetalle {
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Ingresar datos");
-  }
+  }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
+        }
 }
      
  public Producto ActualizarStock(int cantidad,int id){

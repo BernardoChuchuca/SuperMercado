@@ -98,7 +98,8 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         panelfactura2.setName("panelfactura"); // NOI18N
         panelfactura2.setLayout(null);
@@ -258,31 +259,23 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        panelfactura2.add(jButton2);
+        jButton2.setBounds(610, 360, 90, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(639, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(78, 78, 78))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(24, Short.MAX_VALUE)
-                    .addComponent(panelfactura2, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(panelfactura2, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(350, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(199, 199, 199))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(panelfactura2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 12, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelfactura2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -457,20 +450,6 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boxproductosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        tf.remove(Integer.parseInt(tcampo.getText()));
-        tos.remove(Integer.parseInt(tcampo.getText()));
-        tfacturax.setModel(new Tabla_Factura(tf));
-         sub_f.setText(String.valueOf(TotalPagar()));
-        iva_f.setText(String.valueOf(Ivatotal()));
-        supertotal_f.setText(String.valueOf(TotalPagar()+Ivatotal()));
-        
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
@@ -492,6 +471,17 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         
         new ConsultaFactura().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        tf . remove ( Integer . parseInt (tcampo . getText ()));
+        tos . remove ( Integer . parseInt (tcampo . getText ()));
+        tfacturax . setModel ( new Tabla_Factura (tf));
+         sub_f . setText ( String . valueOf (TotalPagar ()));
+        iva_f . setText ( String . valueOf (Ivatotal ()));
+        supertotal_f . setText ( String . valueOf (TotalPagar () + Ivatotal ()));
+    }//GEN-LAST:event_jButton2ActionPerformed
 
    /* public Double Subtotal(){
         String cantidad=(String)tabladetalle.getValueAt(tabladetalle.getSelectedRow(), 0);

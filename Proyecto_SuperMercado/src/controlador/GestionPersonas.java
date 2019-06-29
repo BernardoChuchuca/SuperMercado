@@ -24,10 +24,11 @@ import modelo.Persona;
  */
 public class GestionPersonas {
     public ArrayList<Persona> getListPersonas(){
-       // Telefono tel=new Telefono();
+     
     ArrayList<Persona> us=new ArrayList<>();
+    Connection ctx=null;
         try {
-            Connection ctx=Conexion.getConnection();
+             ctx=Conexion.getConnection();
             Statement st=ctx.createStatement();
             ResultSet rs=st.executeQuery("SELECT *"
                     + " FROM MER_PERSONAS ");
@@ -56,15 +57,19 @@ public class GestionPersonas {
              System.out.println(ex.getMessage());
              
             System.out.println("Error en Listado");
+        }finally{
+        Conexion.close(ctx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return us;
     }
     
      public void InsertPersona(Persona persona) {
-         
+          Connection cnx=null;
     
         try {
-            Connection cnx= Conexion.getConnection();
+            cnx= Conexion.getConnection();
            PreparedStatement pst=cnx.prepareStatement("INSERT INTO MER_PERSONAS (PER_ID,"
                    + " PER_CEDULA, PER_NOMBRE, PER_APELLIDO, PER_DIRECCION, PER_TELEFONO, PER_TIPO,"
                    + "  PER_EDAD, PER_CORREO, PER_USER, PER_CLAVE )"
@@ -90,7 +95,11 @@ public class GestionPersonas {
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Ingresar datos");
-  }
+  }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
+        }
 }
     /*public Persona getBuscarCliente(String codCli){
     Persona cl=null;
@@ -121,8 +130,9 @@ public class GestionPersonas {
     }*/
     public Persona getBuscarCedula(String ced){
     Persona cl=null;
+    Connection cnx=null;
        try {
-            Connection cnx = Conexion.getConnection();
+             cnx = Conexion.getConnection();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery("SELECT * "
                     + "   FROM MER_PERSONAS WHERE PER_CEDULA = '"+ced+"'");
@@ -148,6 +158,10 @@ public class GestionPersonas {
             System.out.println(e.getMessage());
             
             System.out.println("Error en buscar");
+        }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     return cl;
     }
@@ -156,9 +170,9 @@ public class GestionPersonas {
     
     
     public void ActualizarPersona( Persona persona){
-
+          Connection cnx=null;
         try{
-            Connection cnx= Conexion.getConnection();
+           cnx= Conexion.getConnection();
             PreparedStatement pst=cnx.prepareStatement(" UPDATE MER_PERSONAS SET "
             +" PER_CEDULA=?,PER_NOMBRE=?,PER_APELLIDO=?,PER_DIRECCION=?,PER_TELEFONO=?,PER_TIPO=?,PER_EDAD=?,PER_CORREO=?,PER_USER=?,PER_CLAVE=? WHERE PER_CEDULA='"+persona.getPer_cedula()+"'");
             //pst.setInt(1,persona.getPer_id());
@@ -177,12 +191,18 @@ public class GestionPersonas {
         } catch (SQLException ex){
             System.out.println(ex.getMessage());
              System.out.println("Error en Actualizar Dato mmmmmmmmmmm");
+        }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
         }
     }
     
     public void EliminarPersona(String cedula){
+        
+        Connection cnx=null;
         try{
-            Connection cnx= Conexion.getConnection();
+             cnx= Conexion.getConnection();
             PreparedStatement pst = cnx.prepareStatement("DELETE FROM MER_PERSONAS "
             +" WHERE PER_CEDULA=?");
             pst.setString(1, cedula);
@@ -190,6 +210,10 @@ public class GestionPersonas {
         } catch (SQLException ex){
             System.out.println(ex.getMessage());
             System.out.println("Error en Eliminar Datos....................");
+            
+        }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
             
         }
     }

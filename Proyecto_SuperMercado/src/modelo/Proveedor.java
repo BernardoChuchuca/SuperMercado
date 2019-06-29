@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Proveedor {
     private String prov_ruc,prov_nombre_empresa;
-    private int prov_id,prov_cantidad;
+    private int prov_id;
 
     public String getProv_ruc() {
         return prov_ruc;
@@ -37,13 +37,13 @@ public class Proveedor {
         this.prov_id = prov_id;
     }
 
-    public int getProv_cantidad() {
+    /*public int getProv_cantidad() {
         return prov_cantidad;
     }
 
     public void setProv_cantidad(int prov_cantidad) {
         this.prov_cantidad = prov_cantidad;
-    }
+    }*/
     
     
     

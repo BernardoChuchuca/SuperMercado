@@ -70,6 +70,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tcodigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="flor"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="173" y="46" width="130" height="30"/>
@@ -94,6 +97,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JPasswordField" name="tcon">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ft123"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="173" y="113" width="123" height="30"/>

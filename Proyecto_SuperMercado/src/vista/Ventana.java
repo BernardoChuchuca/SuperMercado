@@ -19,7 +19,7 @@ public class Ventana extends javax.swing.JFrame {
          Vent_Clientes ven=new Vent_Clientes();
          Vent_Empleados ven_e=new Vent_Empleados();
          Inicio ini=new Inicio();
-       
+        
          
          
          Gestion gx;
@@ -124,11 +124,14 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
+        
         if(gx.getRol().equals("A")|| gx.getRol().equals("E")){
+           
             escritorio.remove(ini);
         escritorio.remove(ven_e);
         escritorio.remove(ven_f);
         if(ven.isClosed()){
+            
             escritorio.remove(ven);
             escritorio.add(ven);
         }else{
@@ -197,6 +200,26 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         // TODO add your handling code here:
+         Vent_Productos vent_p=new Vent_Productos();
+        
+        if(gx.getRol().equals("A")|| gx.getRol().equals("E")){
+        escritorio.remove(ini);
+        escritorio.remove(ven_e);
+        escritorio.remove(ven_f);
+        if(ven.isClosed()){
+            escritorio.remove(vent_p);
+            escritorio.add(vent_p);
+        }else{
+        escritorio.remove(vent_p);
+         escritorio.add(vent_p);
+        }
+       
+        vent_p.setVisible(true);
+        
+        }else {
+         
+            JOptionPane.showMessageDialog(null,"ACCESO BLOQUEADO");
+        }
         
        
           
