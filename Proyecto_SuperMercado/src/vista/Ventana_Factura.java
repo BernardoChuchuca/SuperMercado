@@ -7,7 +7,7 @@ package vista;
 
 import com.sun.org.apache.xpath.internal.axes.SubContextList;
 import controlador.Gestion;
-import controlador.GestionEmpleados;
+
 import controlador.GestionFactura;
 import controlador.GestionFacturasDetalle;
 import controlador.GestionPersonas;

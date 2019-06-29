@@ -6,7 +6,7 @@
 package vista;
 
 import controlador.Gestion;
-import controlador.GestionEmpleados;
+
 import controlador.GestionPersonas;
 import java.util.ArrayList;
 import java.util.Random;
@@ -306,7 +306,7 @@ public class Vent_Empleados extends javax.swing.JInternalFrame {
       int num=1;
         while (n==false) {      
              num=new Random().nextInt(100)+0;
-            if(!new GestionEmpleados().comparar(num, lis)){
+            if(!new GestionPersonas().comparar(num, lis)){
                n=true;
             
             }

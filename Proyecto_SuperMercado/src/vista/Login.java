@@ -6,7 +6,7 @@
 package vista;
 
 import controlador.Gestion;
-import controlador.GestionEmpleados;
+
 import controlador.GestionPersonas;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
