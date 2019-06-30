@@ -32,6 +32,15 @@ public class Ventana extends javax.swing.JFrame {
         this.gx=gx;
        
         ven_f=new Ventana_Factura(gx);
+        String rolss="";
+       if(gx.getRol().equals("A")){
+         rolss="ADMISNISTRADOR";
+       } else{
+         rolss="EMPLEADO";
+       }
+       
+        this.setTitle("                                                                                                                                                                                          "+rolss);
+       
         
         initComponents();
         setLocationRelativeTo(null);
@@ -59,6 +68,7 @@ public class Ventana extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,9 +76,10 @@ public class Ventana extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1363, 863));
         setMinimumSize(new java.awt.Dimension(1363, 863));
         setPreferredSize(new java.awt.Dimension(1363, 863));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jMenu1.setText("GESTION");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
@@ -76,6 +87,7 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         jMenu3.setText("CLIENTE");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu3MouseClicked(evt);
@@ -84,6 +96,7 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jMenu4.setText("EMPLEADOS");
+        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu4MouseClicked(evt);
@@ -92,6 +105,7 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(jMenu4);
 
         jMenu5.setText("PRODUCTOS");
+        jMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu5MouseClicked(evt);
@@ -100,6 +114,7 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(jMenu5);
 
         jMenu6.setText("FACTURA");
+        jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu6MouseClicked(evt);
@@ -109,7 +124,22 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu7.setText("OTRA CUENTA");
+        jMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu7);
+
         jMenu2.setText("SALIR");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -226,6 +256,22 @@ public class Ventana extends javax.swing.JFrame {
        
           
     }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        // TODO add your handling code here:
+        
+        this.setVisible(false);
+        
+        new Login().setVisible(true);
+    }//GEN-LAST:event_jMenu7MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        
+        System.exit(0);
+        
+        
+    }//GEN-LAST:event_jMenu2MouseClicked
       
     /**
      * @param args the command line arguments
@@ -239,6 +285,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

@@ -370,8 +370,11 @@ public class Vent_Empleados extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         //System.out.println(codigo(getlista()));
-        
+        if(Existe(jced.getText())){
+            
         Persona per=new GestionPersonas().getBuscarCedula(jced.getText());
+        
+        if(per.getEmp_cargo().equals("A")||per.getEmp_cargo().equals("E") ){
         
         lcod.setText(String.valueOf(per.getPer_id()));
         jced.setText(per.getPer_cedula());
@@ -386,6 +389,17 @@ public class Vent_Empleados extends javax.swing.JInternalFrame {
         
         jeda.setText(String.valueOf(per.getPer_edad()));
         
+        }else{
+                
+                 JOptionPane.showMessageDialog(null,"EMPLEADO NO EXISTE");
+                
+        }
+       
+        
+         } else {
+                
+                JOptionPane.showMessageDialog(null,"EMPLEADO NO EXISTE");
+          }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

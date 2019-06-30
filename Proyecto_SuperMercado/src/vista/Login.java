@@ -27,7 +27,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        
+        progreso.setVisible(false);
         setLocationRelativeTo(null);
     }
 
@@ -50,6 +50,7 @@ public class Login extends javax.swing.JFrame {
         tcon = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         entrar = new javax.swing.JButton();
+        progreso = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(640, 342));
@@ -113,7 +114,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel5.add(jPanel4);
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         entrar.setText("INICIAR");
         entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -128,6 +129,13 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5);
         jPanel5.setBounds(30, 40, 550, 200);
+
+        progreso.setBackground(new java.awt.Color(0, 0, 0));
+        progreso.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        progreso.setForeground(new java.awt.Color(0, 0, 0));
+        progreso.setOpaque(false);
+        getContentPane().add(progreso);
+        progreso.setBounds(160, 250, 270, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,14 +164,24 @@ public class Login extends javax.swing.JFrame {
                gx.setRol(lista.get(i).getEmp_cargo());
                gx.setPer_nombre(lista.get(i).getPer_nombre());
                gx.setPer_id(lista.get(i).getPer_id());
+               gx.setCedula(lista.get(i).getPer_cedula());
+               
                 
                 break;
        }
         }
         if(acceso==1){
             if(roll.equals("A")){
-                JOptionPane.showMessageDialog(null,"ACABA DE INGRESAR COMO ADMINISTRADOR");
+                progreso.setVisible(true);
+                
+                progreso.setStringPainted(true);
+                progreso.setValue(100);
+              JOptionPane.showMessageDialog(null,"ACABA DE INGRESAR COMO ADMINISTRADOR");
             }else {
+                progreso.setVisible(true);
+                
+                progreso.setStringPainted(true);
+                progreso.setValue(100);
                 JOptionPane.showMessageDialog(null,"ACABA DE INGRESAR COMO EMPLEADO");
             }
              
@@ -176,6 +194,10 @@ public class Login extends javax.swing.JFrame {
                 
                 
             } else{
+            progreso.setVisible(true);
+                
+                progreso.setStringPainted(true);
+            progreso.setValue(25);
                 JOptionPane.showMessageDialog(null,"DATOS INCORRECTOS");
             }
     }//GEN-LAST:event_entrarActionPerformed
@@ -260,6 +282,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JProgressBar progreso;
     private javax.swing.JTextField tcodigo;
     private javax.swing.JPasswordField tcon;
     // End of variables declaration//GEN-END:variables
