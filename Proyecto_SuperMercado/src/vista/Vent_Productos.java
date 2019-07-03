@@ -376,6 +376,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         producto.setPro_descuento(Double.parseDouble(prodestxt.getText()));
         producto.setProv_id(Integer.parseInt(proidprov.getText()));
         producto.setCat_id(Integer.parseInt(proidcat.getText()));
+        producto.setPro_nacionalidad(pronacioxt.getText());
         
         new GestionProductos().ActualizarProducto(producto);
          JOptionPane.showMessageDialog(null,"PRODUCTO ACTUALIZADO ");
