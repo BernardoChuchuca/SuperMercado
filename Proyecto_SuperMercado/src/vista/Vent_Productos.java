@@ -55,7 +55,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         pronombretxt = new javax.swing.JTextField();
         profechaelatxt = new javax.swing.JTextField();
         profechacadtxt = new javax.swing.JTextField();
-        promarcatxt = new javax.swing.JTextField();
+        pronacioxt = new javax.swing.JTextField();
         propreciotxt = new javax.swing.JTextField();
         prostocktxt = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -75,6 +75,8 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         proidprov = new javax.swing.JTextField();
         proidcat = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        promarcatxt1 = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -90,7 +92,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(204, 42, 115, 25);
+        jButton1.setBounds(204, 42, 185, 35);
 
         proidtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +124,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Precio:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 270, 33, 15);
+        jLabel6.setBounds(20, 270, 64, 26);
 
         jLabel7.setText("Stock:");
         getContentPane().add(jLabel7);
@@ -137,8 +139,14 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         profechaelatxt.setBounds(180, 172, 149, 30);
         getContentPane().add(profechacadtxt);
         profechacadtxt.setBounds(180, 212, 149, 30);
-        getContentPane().add(promarcatxt);
-        promarcatxt.setBounds(180, 440, 149, 30);
+
+        pronacioxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pronacioxtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(pronacioxt);
+        pronacioxt.setBounds(180, 480, 149, 30);
 
         propreciotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +171,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(provBox);
-        provBox.setBounds(180, 490, 330, 24);
+        provBox.setBounds(180, 520, 330, 32);
 
         bingresarP.setText("Ingresar");
         bingresarP.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +180,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(bingresarP);
-        bingresarP.setBounds(580, 500, 100, 25);
+        bingresarP.setBounds(580, 500, 100, 35);
 
         jLabel10.setText("IVA:");
         getContentPane().add(jLabel10);
@@ -193,7 +201,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(bListarP);
-        bListarP.setBounds(710, 500, 61, 25);
+        bListarP.setBounds(710, 500, 83, 35);
 
         catBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -206,7 +214,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(catBox);
-        catBox.setBounds(180, 530, 330, 24);
+        catBox.setBounds(180, 570, 330, 32);
 
         actualizarP.setText("Actualizar");
         actualizarP.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +223,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(actualizarP);
-        actualizarP.setBounds(800, 500, 100, 25);
+        actualizarP.setBounds(800, 500, 100, 35);
 
         tablapro.setModel(new Vista.Tabla_Productos());
         tablapro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -226,19 +234,19 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tablapro);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(360, 70, 830, 403);
+        jScrollPane1.setBounds(360, 70, 830, 402);
 
-        jLabel9.setText("Proveedor :");
+        jLabel9.setText("Nacionalidad");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 480, 70, 30);
+        jLabel9.setBounds(10, 480, 70, 30);
 
         jLabel12.setText("Categoria :");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(20, 530, 70, 20);
+        jLabel12.setBounds(20, 570, 70, 20);
         getContentPane().add(proidprov);
-        proidprov.setBounds(100, 490, 40, 30);
+        proidprov.setBounds(110, 520, 40, 30);
         getContentPane().add(proidcat);
-        proidcat.setBounds(100, 530, 40, 30);
+        proidcat.setBounds(110, 570, 40, 30);
 
         jButton2.setText("ELIMINAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +255,13 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(923, 500, 90, 25);
+        jButton2.setBounds(923, 500, 90, 35);
+
+        jLabel13.setText("Proveedor :");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(10, 520, 70, 30);
+        getContentPane().add(promarcatxt1);
+        promarcatxt1.setBounds(180, 440, 149, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -276,18 +290,19 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
        // Proveedor proveedor= new GestionProveedores().getBuscarProveedores((String.valueOf(provBox.getSelectedItem())));
        // Categoria categoria= new GestionCategorias().getBuscarCategoriaNombre((String.valueOf(catBox.getSelectedItem())));
       
-        producto.setPro_id(numero()); // Cunado se inserta el cliente el id se va a sumar mas 1 con el tamano de la lista
+        producto.setPro_id(new GestionProductos().proids()); // Cunado se inserta el cliente el id se va a sumar mas 1 con el tamano de la lista
         producto.setPro_codigo(procodigotxt.getText());
         producto.setPro_nombre(pronombretxt.getText());
         producto.setPro_fec_cadu(sqlDate);
         producto.setPro_fec_elab(sqlDate1);
-        producto.setPro_marca(promarcatxt.getText());
+        producto.setPro_marca(promarcatxt1.getText());
         producto.setPro_precio(Integer.parseInt(propreciotxt.getText()));
         producto.setPro_stock(Integer.parseInt(prostocktxt.getText()));
         producto.setPro_iva(proivatxt.getText());
         producto.setPro_descuento(Double.parseDouble(prodestxt.getText()));
         producto.setProv_id(Integer.parseInt(proidprov.getText()));
         producto.setCat_id(Integer.parseInt(proidcat.getText()));
+        producto.setPro_nacionalidad(pronacioxt.getText());
         
         new  GestionProductos().InsertProductos(producto);
         
@@ -333,7 +348,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         producto.setPro_nombre(pronombretxt.getText());
         producto.setPro_fec_cadu(sqlDate);
         producto.setPro_fec_elab(sqlDate1);
-        producto.setPro_marca(promarcatxt.getText());
+        producto.setPro_marca(pronacioxt.getText());
         producto.setPro_precio(Integer.parseInt(propreciotxt.getText()));
         producto.setPro_stock(Integer.parseInt(prostocktxt.getText()));
         producto.setPro_iva(proivatxt.getText());
@@ -356,7 +371,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         pronombretxt.setText((String) tablapro.getValueAt(tablapro.getSelectedRow(),2));
         profechaelatxt.setText((String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 3))));
         profechacadtxt.setText((String.valueOf( tablapro.getValueAt(tablapro.getSelectedRow(),4))));
-        promarcatxt.setText((String)tablapro.getValueAt(tablapro.getSelectedRow(), 5));
+        pronacioxt.setText((String)tablapro.getValueAt(tablapro.getSelectedRow(), 5));
         propreciotxt.setText((String.valueOf (tablapro.getValueAt(tablapro.getSelectedRow(),6))));
         prostocktxt.setText((String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 7))));
         proivatxt.setText((String) tablapro.getValueAt(tablapro.getSelectedRow(),8));
@@ -391,6 +406,10 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null,"PRODUCTO ELINADO");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void pronacioxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pronacioxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pronacioxtActionPerformed
+
     public void Llenar(){
          // TODO add your handling code here:
         for(int i=0;i< new GestionProveedores().getListProveedor().size();i++){
@@ -423,6 +442,7 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -441,7 +461,8 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField proidprov;
     private javax.swing.JTextField proidtxt;
     private javax.swing.JTextField proivatxt;
-    private javax.swing.JTextField promarcatxt;
+    private javax.swing.JTextField promarcatxt1;
+    private javax.swing.JTextField pronacioxt;
     private javax.swing.JTextField pronombretxt;
     private javax.swing.JTextField propreciotxt;
     private javax.swing.JTextField prostocktxt;
@@ -461,30 +482,6 @@ public void listarId(){
     }
 }
 
-public boolean listarEntero(int num){
-    boolean s=false;
-    for (int i = 0; i < listae.size(); i++) {
-        if(num==listae.get(i)){
-            s=true;
-            break;
-        }
-    }
-    
-    return s;
-}
-
-public int numero(){
-    boolean n=false;
-    int numid=1;
-    while(n==false){
-        numid= new Random().nextInt(100)+0;
-        if(!listarEntero(numid)){
-            n=true;
-        }
-        
-    }
-    return numid;
-}
 
 
 }
