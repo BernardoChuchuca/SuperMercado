@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Persona;
 
 import modelo.Producto;
 
@@ -224,6 +225,16 @@ public class GestionProductos {
             System.err.println("CONEXION CERRADA");
             
         }
+     }
+     
+     
+     public int  proids(){
+       ArrayList<Producto>list1=new GestionProductos().getListProducto();
+       int num=list1.size()-1;
+       int id=list1.get(num).getPro_id()+1;
+        
+
+      return id;
      }
      
      
