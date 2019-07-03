@@ -13,11 +13,20 @@ import java.sql.Date;
  */
 public class Producto {
  
-    private String pro_nombre,pro_marca,pro_codigo,pro_iva;
+    private String pro_nombre,pro_marca,pro_codigo,pro_iva,pro_nacionalidad;
     private Date pro_fec_elab,pro_fec_cadu;
     private int pro_id,pro_precio,pro_stock,cat_id,prov_id;
     private double pro_descuento;
 
+    public void setPro_nacionalidad(String pro_nacionalidad) {
+        this.pro_nacionalidad = pro_nacionalidad;
+    }
+
+    public String getPro_nacionalidad() {
+        return pro_nacionalidad;
+    }
+
+    
     public double getPro_descuento() {
         return pro_descuento;
     }
