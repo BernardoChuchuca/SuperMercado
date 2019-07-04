@@ -9,9 +9,12 @@ import com.sun.glass.events.KeyEvent;
 import controlador.Gestion;
 
 import controlador.GestionPersonas;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
 import modelo.Persona;
@@ -28,7 +31,12 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         progreso.setVisible(false);
+        this.setSize(900,400);
         setLocationRelativeTo(null);
+        ImageIcon img1= new ImageIcon(getClass().getResource("/imagenes/flecha.png"));
+        Icon f1 = new ImageIcon(img1.getImage().getScaledInstance(entrar.getWidth(), entrar.getHeight(),Image.SCALE_DEFAULT));
+         entrar.setIcon(f1);
+         this.repaint();
     }
 
     /**
@@ -40,6 +48,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -48,9 +57,10 @@ public class Login extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         tcodigo = new javax.swing.JTextField();
         tcon = new javax.swing.JPasswordField();
-        jPanel1 = new javax.swing.JPanel();
-        entrar = new javax.swing.JButton();
         progreso = new javax.swing.JProgressBar();
+        entrar = new javax.swing.JButton();
+
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(640, 342));
@@ -66,14 +76,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("USUARIO :");
         jPanel2.add(jLabel1);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CONTRASEÑA :");
         jPanel2.add(jLabel2);
@@ -114,93 +122,31 @@ public class Login extends javax.swing.JFrame {
 
         jPanel5.add(jPanel4);
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        getContentPane().add(jPanel5);
+        jPanel5.setBounds(30, 20, 600, 170);
 
+        progreso.setBackground(new java.awt.Color(0, 0, 0));
+        progreso.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        progreso.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(progreso);
+        progreso.setBounds(270, 280, 360, 40);
+
+        entrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         entrar.setText("INICIAR");
+        entrar.setBorder(null);
         entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entrar.setMaximumSize(new java.awt.Dimension(11, 31));
+        entrar.setMinimumSize(new java.awt.Dimension(11, 31));
         entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entrarActionPerformed(evt);
             }
         });
-        jPanel1.add(entrar);
-
-        jPanel5.add(jPanel1);
-
-        getContentPane().add(jPanel5);
-        jPanel5.setBounds(30, 40, 550, 200);
-
-        progreso.setBackground(new java.awt.Color(0, 0, 0));
-        progreso.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        progreso.setForeground(new java.awt.Color(0, 0, 0));
-        progreso.setOpaque(false);
-        getContentPane().add(progreso);
-        progreso.setBounds(160, 250, 270, 30);
+        getContentPane().add(entrar);
+        entrar.setBounds(420, 190, 160, 80);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
-        // TODO add your handling code here:
-        
-        GestionPersonas gc=new GestionPersonas();
-        Gestion gx=new Gestion();
-        
-        
-         String roll="";
-         
-        ArrayList<Persona>lista=gc.getListPersonas();
-       boolean respuesta =false;
-       int acceso=0;
-        for (int i = 0; i < lista.size(); i++) {
-        
-            if(lista.get(i).getEmp_usuario().equals(tcodigo.getText()) 
-            && lista.get(i).getEmp_contrasena().equals(tcon.getText()) && lista.get(i).getEmp_cargo().equals("A") || lista.get(i).getEmp_usuario().equals(tcodigo.getText()) 
-            && lista.get(i).getEmp_contrasena().equals(tcon.getText()) && lista.get(i).getEmp_cargo().equals("E")   ){
-               
-                
-                acceso=1;
-                roll=lista.get(i).getEmp_cargo();
-               gx.setRol(lista.get(i).getEmp_cargo());
-               gx.setPer_nombre(lista.get(i).getPer_nombre());
-               gx.setPer_id(lista.get(i).getPer_id());
-               gx.setCedula(lista.get(i).getPer_cedula());
-               
-                
-                break;
-       }
-        }
-        if(acceso==1){
-            if(roll.equals("A")){
-                progreso.setVisible(true);
-                
-                progreso.setStringPainted(true);
-                progreso.setValue(100);
-              JOptionPane.showMessageDialog(null,"ACABA DE INGRESAR COMO ADMINISTRADOR");
-            }else {
-                progreso.setVisible(true);
-                
-                progreso.setStringPainted(true);
-                progreso.setValue(100);
-                JOptionPane.showMessageDialog(null,"ACABA DE INGRESAR COMO EMPLEADO");
-            }
-             
-               
-                new Ventana(gx).setVisible(true);
-                //new Ventana(gx).setVisible(true);
-                
-                this.setVisible(false);
-                
-                
-                
-            } else{
-            progreso.setVisible(true);
-                
-                progreso.setStringPainted(true);
-            progreso.setValue(25);
-                JOptionPane.showMessageDialog(null,"DATOS INCORRECTOS");
-            }
-    }//GEN-LAST:event_entrarActionPerformed
 
     private void tcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcodigoActionPerformed
         // TODO add your handling code here:
@@ -232,46 +178,69 @@ public class Login extends javax.swing.JFrame {
         
            
             
-            entrar.doClick();
+           entrar.doClick();
             
             
         }
     }//GEN-LAST:event_tconKeyTyped
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
+        // TODO add your handling code here:
+        GestionPersonas gc=new GestionPersonas();
+        Gestion gx=new Gestion();
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
+        String roll="";
+
+        ArrayList<Persona>lista=gc.getListPersonas();
+        boolean respuesta =false;
+        int acceso=0;
+        for (int i = 0; i < lista.size(); i++) {
+
+            if(lista.get(i).getEmp_usuario().equals(tcodigo.getText())
+                && lista.get(i).getEmp_contrasena().equals(tcon.getText()) && lista.get(i).getEmp_cargo().equals("A") || lista.get(i).getEmp_usuario().equals(tcodigo.getText())
+                && lista.get(i).getEmp_contrasena().equals(tcon.getText()) && lista.get(i).getEmp_cargo().equals("E")   ){
+
+                acceso=1;
+                roll=lista.get(i).getEmp_cargo();
+                gx.setRol(lista.get(i).getEmp_cargo());
+                gx.setPer_nombre(lista.get(i).getPer_nombre());
+                gx.setPer_id(lista.get(i).getPer_id());
+                gx.setCedula(lista.get(i).getPer_cedula());
+                gx.setPer_apellido(lista.get(i).getPer_apellido());
+
+                break;
             }
-        });
-    }
+        }
+        if(acceso==1){
+            if(roll.equals("A")){
+                progreso.setVisible(true);
+
+                progreso.setStringPainted(true);
+                progreso.setValue(100);
+                JOptionPane.showMessageDialog(null,"ACABA DE INGRESAR COMO ADMINISTRADOR");
+            }else {
+                progreso.setVisible(true);
+
+                progreso.setStringPainted(true);
+                progreso.setValue(100);
+                JOptionPane.showMessageDialog(null,"ACABA DE INGRESAR COMO EMPLEADO");
+            }
+
+            new Ventana(gx).setVisible(true);
+            //new Ventana(gx).setVisible(true);
+
+            this.setVisible(false);
+
+        } else{
+            progreso.setVisible(true);
+
+            progreso.setStringPainted(true);
+            progreso.setValue(0);
+            JOptionPane.showMessageDialog(null,"DATOS INCORRECTOS");
+        }
+    }//GEN-LAST:event_entrarActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton entrar;
