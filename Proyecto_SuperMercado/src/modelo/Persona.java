@@ -5,6 +5,7 @@
  */
 
 package modelo;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,18 @@ import java.util.List;
 public class Persona {
     private  String per_nombre,per_apellido,per_cedula,per_direccion,per_telefono;
      private String  emp_cargo,correo,emp_usuario,emp_contrasena;
+     private Date fec_naci;
+     private int per_id;
+
+    public Date getFec_naci() {
+        return fec_naci;
+    }
+
+    public void setFec_naci(Date fec_naci) {
+        this.fec_naci = fec_naci;
+    }
+     
+      
 
     public void setCorreo(String correo) {
         this.correo = correo;
@@ -49,15 +62,9 @@ public class Persona {
     public void setEmp_contrasena(String emp_contrasena) {
         this.emp_contrasena = emp_contrasena;
     }
-    private int  per_id,per_edad;
+   
 
-    public int getPer_edad() {
-        return per_edad;
-    }
-
-    public void setPer_edad(int per_edad) {
-        this.per_edad = per_edad;
-    }
+   
     
 
     public String getPer_nombre() {
