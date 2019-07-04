@@ -42,7 +42,7 @@ public class GestionPersonas {
             per.setPer_direccion(rs.getString("PER_DIRECCION").trim());
             per.setPer_telefono(rs.getString("PER_TELEFONO").trim());
              per.setEmp_cargo(rs.getString("PER_TIPO").trim());
-            per.setPer_edad(rs.getInt("PER_EDAD"));
+            per.setFec_naci(rs.getDate("PER_FECHA_NACIMIENTO"));
             per.setCorreo(rs.getString("PER_CORREO"));
             per.setEmp_usuario(rs.getString("PER_USER").trim());
             per.setEmp_contrasena(rs.getString("PER_CLAVE").trim());
@@ -72,7 +72,7 @@ public class GestionPersonas {
             cnx= Conexion.getConnection();
            PreparedStatement pst=cnx.prepareStatement("INSERT INTO MER_PERSONAS (PER_ID,"
                    + " PER_CEDULA, PER_NOMBRE, PER_APELLIDO, PER_DIRECCION, PER_TELEFONO, PER_TIPO,"
-                   + "  PER_EDAD, PER_CORREO, PER_USER, PER_CLAVE )"
+                   + " PER_CORREO, PER_USER, PER_CLAVE,PER_FECHA_NACIMIENTO)"
                     + " VALUES(?,?,?,?,?,?,?,?,?,?,?)"); 
            pst.setInt(1,persona.getPer_id());
            pst.setString(2,persona.getPer_cedula());
@@ -80,11 +80,11 @@ public class GestionPersonas {
            pst.setString(4,persona.getPer_apellido());
            pst.setString(5,persona.getPer_direccion());
            pst.setString(6,persona.getPer_telefono());
-          pst.setString(7, persona.getEmp_cargo());
-          pst.setInt(8, persona.getPer_edad());
-          pst.setString(9,persona.getCorreo());
-           pst.setString(10,persona.getEmp_usuario());
-           pst.setString(11,persona.getEmp_contrasena());
+           pst.setString(7, persona.getEmp_cargo());
+           pst.setString(8,persona.getCorreo());
+           pst.setString(9,persona.getEmp_usuario());
+           pst.setString(10,persona.getEmp_contrasena());
+           pst.setDate(11, persona.getFec_naci());
           
           
           
@@ -144,7 +144,7 @@ public class GestionPersonas {
              cl.setPer_apellido(rs.getString("PER_APELLIDO"));
              cl.setPer_direccion(rs.getString("PER_DIRECCION"));
              cl.setPer_telefono(rs.getString("PER_TELEFONO"));
-             cl.setPer_edad(rs.getInt("PER_EDAD"));
+             cl.setFec_naci(rs.getDate("PER_FECHA_NACIMIENTO"));
              cl.setCorreo(rs.getString("PER_CORREO"));
              cl.setEmp_usuario(rs.getString("PER_USER"));
              cl.setEmp_cargo(rs.getString("PER_TIPO"));
@@ -174,7 +174,7 @@ public class GestionPersonas {
         try{
            cnx= Conexion.getConnection();
             PreparedStatement pst=cnx.prepareStatement(" UPDATE MER_PERSONAS SET "
-            +" PER_CEDULA=?,PER_NOMBRE=?,PER_APELLIDO=?,PER_DIRECCION=?,PER_TELEFONO=?,PER_TIPO=?,PER_EDAD=?,PER_CORREO=?,PER_USER=?,PER_CLAVE=? WHERE PER_CEDULA='"+persona.getPer_cedula()+"'");
+            +" PER_CEDULA=?,PER_NOMBRE=?,PER_APELLIDO=?,PER_DIRECCION=?,PER_TELEFONO=?,PER_TIPO=?,PER_CORREO=?,PER_USER=?,PER_CLAVE=?,PER_FECHA_NACIMIENTO=? WHERE PER_CEDULA='"+persona.getPer_cedula()+"'");
             //pst.setInt(1,persona.getPer_id());
            pst.setString(1,persona.getPer_cedula());
            pst.setString(2,persona.getPer_nombre());
@@ -182,10 +182,11 @@ public class GestionPersonas {
            pst.setString(4,persona.getPer_direccion());
            pst.setString(5,persona.getPer_telefono());
           pst.setString(6, persona.getEmp_cargo());
-          pst.setInt(7, persona.getPer_edad());
-          pst.setString(8,persona.getCorreo());
-           pst.setString(9,persona.getEmp_usuario());
-           pst.setString(10,persona.getEmp_contrasena());
+          
+          pst.setString(7,persona.getCorreo());
+           pst.setString(8,persona.getEmp_usuario());
+           pst.setString(9,persona.getEmp_contrasena());
+           pst.setDate(10, persona.getFec_naci());
            pst.executeQuery();
            
         } catch (SQLException ex){
@@ -233,5 +234,14 @@ public class GestionPersonas {
       return res;
     
     }
+    
+    public int  perids(){
+       ArrayList<Persona>list1=new GestionPersonas().getListPersonas();
+       int num=list1.size()-1;
+       int id=list1.get(num).getPer_id()+1;
+        
+
+      return id;
+     }
     
 }

@@ -17,8 +17,17 @@ public class Gestion {
     
      String rol;
      String per_nombre;
+     String per_apellido;
      
      String cedula;
+
+    public void setPer_apellido(String per_apellido) {
+        this.per_apellido = per_apellido;
+    }
+ 
+    public String getPer_apellido() {
+        return per_apellido;
+    }
 
     public void setCedula(String cedula) {
         this.cedula = cedula;

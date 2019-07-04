@@ -114,14 +114,15 @@ public class GestionProductos {
            pst.setString(3,producto.getPro_nombre());
            pst.setDate(4,producto.getPro_fec_elab());
            pst.setDate(5,producto.getPro_fec_cadu());
-           pst.setInt(7,producto.getPro_precio());
-           pst.setInt(8,producto.getPro_stock());
-           pst.setString(9,producto.getPro_iva());
-           pst.setDouble(10,producto.getPro_descuento());
-           pst.setInt(11,producto.getCat_id());
-           pst.setInt(12, producto.getProv_id());
-           pst.setString(13,producto.getPro_nacionalidad());
-           pst.setString(6,producto.getPro_marca());
+           pst.setInt(6,producto.getPro_precio());
+           pst.setInt(7,producto.getPro_stock());
+           pst.setString(8,producto.getPro_iva());
+           pst.setDouble(9,producto.getPro_descuento());
+           pst.setInt(10,producto.getCat_id());
+           pst.setInt(11, producto.getProv_id());
+         pst.setString(12, producto.getPro_nacionalidad());
+          
+           pst.setString(13,producto.getPro_marca());
            pst.executeQuery();
           
         } catch (SQLException ex) {
@@ -147,10 +148,10 @@ public class GestionProductos {
             
              
             pro.setPro_id(rs.getInt("PRO_ID"));
-           /* pro.setNombre(rs.getString("PRO_NOMBRE").trim());
-            pro.setTipo(rs.getString("PRO_TIPO").trim());
-            pro.setStock(rs.getInt("PRO_STOCK"));
-             pro.setNacionalidad(rs.getString("PRO_NACIONALIDAD").trim());*/
+           // pro.setNombre(rs.getString("PRO_NOMBRE").trim());
+            //pro.setTipo(rs.getString("PRO_TIPO").trim());
+            pro.setPro_stock(rs.getInt("PRO_STOCK"));
+            // pro.setNacionalidad(rs.getString("PRO_NACIONALIDAD").trim());*/
            pro.setPro_precio(rs.getInt("PRO_PRECIO"));
            pro.setPro_descuento(rs.getDouble("PRO_DESCUENTO_DISPONIBLE"));
            pro.setPro_iva(rs.getString("PRO_IVA_DISPONIBLE"));
@@ -208,7 +209,47 @@ public class GestionProductos {
         }
     return pro;
     }
-     
+      
+       /*public Producto getBuscarPoductocodigo(String codigo){
+      Producto pro=null;
+      Connection cnx=null;
+       try {
+             cnx = Conexion.getConnection();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * "
+                    + "   FROM MER_PRODUCTOS WHERE PRO_CODIGO = '"+codigo+"'");
+            while (rs.next()) {
+            pro=new Producto();
+            
+             
+           pro.setPro_id(rs.getInt("PRO_ID"));
+            pro.setPro_codigo(rs.getString("PRO_CODIGO").trim());
+            pro.setPro_nombre(rs.getString("PRO_NOMBRE").trim());
+            pro.setPro_fec_elab(rs.getDate("PRO_FECHA_ELABORADO"));
+            pro.setPro_fec_cadu(rs.getDate("PRO_FECHA_CADUCIDAD"));
+            pro.setPro_precio(rs.getInt("PRO_PRECIO"));
+            pro.setPro_stock(rs.getInt("PRO_STOCK"));
+            pro.setPro_iva(rs.getString("PRO_IVA_DISPONIBLE").trim());
+            pro.setPro_descuento(rs.getDouble("PRO_DESCUENTO_DISPONIBLE"));
+            pro.setCat_id(rs.getInt("MER_CATEGORIAS_CAT_ID"));
+            pro.setProv_id(rs.getInt("MER_PROVEEDORES_PROV_ID"));
+            pro.setPro_nacionalidad(rs.getString("PRO_NACIONALIDAD"));
+             pro.setPro_marca(rs.getString("PRO_MARCA").trim());
+            }
+        } catch (SQLException  e ) {
+            e.printStackTrace();
+            
+            System.out.println(e.getMessage());
+            
+            System.out.println("Error en buscar");
+        }finally{
+        Conexion.close(cnx);
+            System.err.println("CONEXION CERRADA");
+            
+        }
+    return pro;
+    }
+     */
      public void EliminarProducto(int proId){
          
          Connection cnx=null;
@@ -238,6 +279,20 @@ public class GestionProductos {
       return id;
      }
      
+     public boolean comparar(int num,ArrayList<Integer>list){
+      boolean res=false;
+        for (int i = 0; i < list.size(); i++) {
+             if(list.get(i)==num){
+                res=true;
+                break;
+            
+             
+             }
+            
+        }
+      return res;
+    
+    }
      
      
 }
