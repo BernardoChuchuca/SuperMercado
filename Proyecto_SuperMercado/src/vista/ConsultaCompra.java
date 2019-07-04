@@ -68,22 +68,34 @@ public class ConsultaCompra extends javax.swing.JInternalFrame {
         tabla2 = new javax.swing.JTable();
         nompro = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(816, 542));
-        setMinimumSize(new java.awt.Dimension(816, 542));
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1342, 685));
+        setMinimumSize(new java.awt.Dimension(1342, 685));
+        setPreferredSize(new java.awt.Dimension(1342, 685));
+        getContentPane().setLayout(null);
 
         proidprov.setEditable(false);
+        getContentPane().add(proidprov);
+        proidprov.setBounds(45, 273, 42, 28);
 
         jLabel2.setText("ID :");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(12, 279, 21, 15);
 
         provBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 provBoxActionPerformed(evt);
             }
         });
+        getContentPane().add(provBox);
+        provBox.setBounds(12, 328, 148, 24);
 
         tablacom.setModel(new Tabla_Compra(new Gestion_Registro_Productos().getListCompraProducto()));
         jScrollPane3.setViewportView(tablacom);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(218, 0, 567, 230);
 
         tabla2.setModel(new Tabla_Compra());
         tabla2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,46 +105,13 @@ public class ConsultaCompra extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tabla2);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(218, 313, 567, 163);
+
         nompro.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         nompro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(proidprov, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(provBox, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nompro, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(21, 21, 21))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(proidprov, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(provBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(nompro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
+        getContentPane().add(nompro);
+        nompro.setBounds(12, 389, 188, 41);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
