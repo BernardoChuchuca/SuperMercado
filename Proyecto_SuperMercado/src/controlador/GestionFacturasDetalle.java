@@ -35,7 +35,7 @@ public class GestionFacturasDetalle {
             
             
             fac.setDet_id(rs.getInt("FDET_ID"));
-              fac.setDet_id(rs.getInt("FDET_CANTIDAD"));
+              fac.setDet_catidad(rs.getInt("FDET_CANTIDAD"));
              fac.setValor_unitario(rs.getDouble("FDET_PRECIO"));
             fac.setPro_id(rs.getInt("MER_PRODUCTOS_PRO_ID"));
              fac.setFac_id(rs.getInt("MER_FACTURAS_CABECERAS_FACT_ID"));
@@ -94,6 +94,9 @@ public class GestionFacturasDetalle {
     }
      
      
+     
+     
+     
      public void InsertaFacturaDetalle(Detalle_Factura detfac) {
          
        Connection cnx=null;
@@ -118,7 +121,7 @@ public class GestionFacturasDetalle {
             
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            System.out.println("Error en Ingresar datos");
+            System.out.println("Error en Ingresar datos fac");
   }finally{
         Conexion.close(cnx);
             System.err.println("CONEXION CERRADA");
@@ -139,5 +142,31 @@ public class GestionFacturasDetalle {
  
  return pro;
  }    
+ 
+   public int  facdetids(){
+       ArrayList<Detalle_Factura>list1=new GestionFacturasDetalle().getListDetalleFactura();
+               int num=list1.size()-1;
+       int id=list1.get(num).getDet_id()+1;
+        
+
+      return id;
+     }
+      
+   
+   public boolean comparar(int num,ArrayList<Integer>list){
+      boolean res=false;
+        for (int i = 0; i < list.size(); i++) {
+             if(list.get(i)==num){
+                res=true;
+                break;
+            
+             
+             }
+            
+        }
+      return res;
+    
+    }
+    
     
 }
