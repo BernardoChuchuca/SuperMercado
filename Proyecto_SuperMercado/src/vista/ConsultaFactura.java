@@ -22,7 +22,7 @@ import modelo.Producto;
  *
  * @author Bernardo
  */
-public class ConsultaFactura extends javax.swing.JFrame {
+public class ConsultaFactura extends javax.swing.JInternalFrame {
 
     
     /**

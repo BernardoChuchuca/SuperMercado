@@ -11,11 +11,17 @@ import Controlador.GestionCategorias;
 import Modelo.Categoria;
 import modelo.Producto;
 import Modelo.Proveedor;
+import controlador.GestionFactura;
+import controlador.GestionPersonas;
+import controlador.Gestion_Registro_Productos;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import modelo.Factura;
+import modelo.Persona;
+import modelo.Registro_Productos;
 
 /**
  *
@@ -34,6 +40,68 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
            catBox.setVisible(false);
           proidprov.setText(" ");
           proidcat.setText("");
+    }
+    
+    public boolean Existe(String codigo){
+    
+        boolean exi=false;
+        ArrayList<Producto>lis=new GestionProductos().getListProducto();
+        
+        for (int i = 0; i < lis.size(); i++) {
+            if(lis.get(i).getPro_codigo().equals(codigo)){
+               exi=true;
+               break;
+            
+            }  
+            
+        }
+        
+        
+    
+    return exi;
+    }
+    
+    
+     public Producto Prod(String codigo){
+    
+        boolean exi=false;
+        ArrayList<Producto>lis=new GestionProductos().getListProducto();
+        Producto pro=null;
+        for (int i = 0; i < lis.size(); i++) {
+            if(lis.get(i).getPro_codigo().equals(codigo)){
+                 pro=lis.get(i);
+               exi=true;
+               break;
+            
+            }  
+            
+        }
+        
+        
+    
+    return pro;
+    }
+      public int  codigo(ArrayList<Integer>lis){
+      boolean n=false;
+      int num=1;
+        while (n==false) {      
+             num=new Random().nextInt(100)+0;
+            if(!new GestionProductos().comparar(num, lis)){
+               n=true;
+            
+            }
+        }
+
+      return num;
+     }
+    
+    public  ArrayList<Integer>getlista(){
+        ArrayList<Integer>list=new ArrayList<>();
+        ArrayList<Producto>list1=new GestionProductos().getListProducto();
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(list1.get(i).getPro_id());
+        }
+    return list;
     }
 
     /**
@@ -308,10 +376,9 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         java.sql.Date sqlDate1 = new java.sql.Date(utilDate1.getTime());
         
-       // Proveedor proveedor= new GestionProveedores().getBuscarProveedores((String.valueOf(provBox.getSelectedItem())));
-       // Categoria categoria= new GestionCategorias().getBuscarCategoriaNombre((String.valueOf(catBox.getSelectedItem())));
+    
       
-        producto.setPro_id(new GestionProductos().proids()); // Cunado se inserta el cliente el id se va a sumar mas 1 con el tamano de la lista
+        producto.setPro_id(codigo(getlista())); // Cunado se inserta el cliente el id se va a sumar mas 1 con el tamano de la lista
         producto.setPro_codigo(procodigotxt.getText());
         producto.setPro_nombre(pronombretxt.getText());
         producto.setPro_fec_cadu(sqlDate);
@@ -325,11 +392,27 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         producto.setCat_id(Integer.parseInt(proidcat.getText()));
         producto.setPro_nacionalidad(pronacioxt.getText());
         
-        new  GestionProductos().InsertProductos(producto);
+        
+        if(!Existe(procodigotxt.getText())){
+        
+          new  GestionProductos().InsertProductos(producto);
+            CompraProducto(producto);
+        }else {
+         producto.setPro_id(Integer.parseInt(proidtxt.getText()));
+        int stock=Prod(procodigotxt.getText()).getPro_stock();
+         
+         producto.setPro_stock(producto.getPro_stock()+ stock);
+        new GestionProductos().ActualizarProducto(producto);
+            CompraProducto(producto);
+        }
+        
+      
         
         
         
         proidtxt.setText( String.valueOf(producto.getPro_id()));
+        
+        
         JOptionPane.showMessageDialog(null,"PRODUCTO REGISTRADO ");
         //tablapro.setModel(new Tabla_Productos(new GestionProductos().getListProducto()));
         
@@ -393,13 +476,14 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
         pronombretxt.setText((String) tablapro.getValueAt(tablapro.getSelectedRow(),2));
         profechaelatxt.setText((String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 3))));
         profechacadtxt.setText((String.valueOf( tablapro.getValueAt(tablapro.getSelectedRow(),4))));
-        pronacioxt.setText((String)tablapro.getValueAt(tablapro.getSelectedRow(), 5));
+        promarcatxt1.setText((String)tablapro.getValueAt(tablapro.getSelectedRow(), 5));
         propreciotxt.setText((String.valueOf (tablapro.getValueAt(tablapro.getSelectedRow(),6))));
         prostocktxt.setText((String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 7))));
         proivatxt.setText((String) tablapro.getValueAt(tablapro.getSelectedRow(),8));
         prodestxt.setText(String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 9)));
         proidcat.setText(String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 10)));
         proidprov.setText(String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 11)));
+        pronacioxt.setText(String.valueOf(tablapro.getValueAt(tablapro.getSelectedRow(), 12)));
     }//GEN-LAST:event_tablaproMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -476,6 +560,25 @@ public class Vent_Productos extends javax.swing.JInternalFrame {
             
         }
     }
+     
+    public void CompraProducto(Producto pro){
+        java.util.Date utilDate = new java.util.Date();
+       java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        Registro_Productos rp=new Registro_Productos();
+        
+        rp.setReg_id(codigoregid(getlistaregid()));
+        rp.setReg_num_fac(codigofac(getlistafac()));
+        rp.setPro_id(pro.getPro_id());
+        rp.setProv_id(pro.getProv_id());
+        rp.setFecha_compra(sqlDate);
+        rp.setReg_cantidad(Integer.parseInt(prostocktxt.getText()));
+        
+        new Gestion_Registro_Productos().InsertRegistroProductos(rp);
+        
+    
+    
+    
+    } 
     
     /**
      * @param args the command line arguments
@@ -533,6 +636,53 @@ public void listarId(){
        
     }
 }
+
+ public int  codigofac(ArrayList<Integer>lis){
+      boolean n=false;
+      int num=1;
+        while (n==false) {      
+             num=new Random().nextInt(100)+0;
+            if(!new Gestion_Registro_Productos().comparar(num, lis)){
+               n=true;
+            
+            }
+        }
+
+      return num;
+     }
+    
+    public  ArrayList<Integer>getlistafac(){
+        ArrayList<Integer>list=new ArrayList<>();
+        ArrayList<Registro_Productos>list1=new Gestion_Registro_Productos().getListCompraProducto();
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(list1.get(i).getReg_num_fac());
+        }
+    return list;
+    }
+    
+    
+    public int  codigoregid(ArrayList<Integer>lis){
+      boolean n=false;
+      int num=1;
+        while (n==false) {      
+             num=new Random().nextInt(100)+0;
+            if(!new Gestion_Registro_Productos().comparar(num, lis)){
+               n=true;
+            
+            }
+        }
+
+      return num;
+     }
+    
+    public  ArrayList<Integer>getlistaregid(){
+        ArrayList<Integer>list=new ArrayList<>();
+        ArrayList<Registro_Productos>list1=new Gestion_Registro_Productos().getListCompraProducto();
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(list1.get(i).getReg_id());
+        }
+    return list;
+    }
 
 
 

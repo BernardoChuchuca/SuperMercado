@@ -8,6 +8,7 @@ package vista;
  */
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import modelo.Empleado;
@@ -17,7 +18,7 @@ import modelo.Persona;
 
 public class Tabla_Empleados extends AbstractTableModel {
 
-	public String[] columnas = {"id","Cedula","Nombre","Apellido","Correo","Cargo","Usuario","Contraseña","Direccion","Telefono","Edad"};//array de las columnas con el titulo del contenido
+	public String[] columnas = {"id","Cedula","Nombre","Apellido","Correo","Cargo","Usuario","Contraseña","Direccion","Telefono","Fecha_Nacimiento"};//array de las columnas con el titulo del contenido
 	public Class[] columnasTipos = {Integer.class, String.class,String.class,String.class,String.class,String.class,String.class,String.class,String.class,String.class,Integer.class};//tipo de dato a trbajar
 	private ArrayList<Persona> listaEmpleados = new ArrayList<>();//array list de tipo medico
 
@@ -93,7 +94,7 @@ public class Tabla_Empleados extends AbstractTableModel {
 			emp.setPer_telefono((String) value);
 			break;   
                 case 10: 
-                        emp.setPer_edad((int)value); 
+                        emp.setFec_naci((Date)value); 
                         
                         break;
                 
@@ -144,7 +145,7 @@ public class Tabla_Empleados extends AbstractTableModel {
                
                         
                  case 10:
-                    return emp.getPer_edad();    
+                    return emp.getFec_naci();
                                 
                         
                 

@@ -15,8 +15,8 @@ import javax.swing.table.AbstractTableModel;
  * @author Bryan
  */
 public class Tabla_Productos extends AbstractTableModel {
-    public String[] columnas = {"Id","Codigo","Nombre","Fecha Ela","Fecha Cad","Compañia","Precio","Stock","Iva","Descuento","Categoria","Proveedor"};//array de las columnas con el titulo del contenido
-	public Class[] columnasTipos = {Integer.class, String.class,String.class,Date.class,Date.class,String.class,Integer.class,Integer.class,String.class,Double.class,Integer.class, Integer.class};//tipo de dato a trbajar
+    public String[] columnas = {"Id","Codigo","Nombre","Fecha Ela","Fecha Cad","Compañia","Precio","Stock","Iva","Descuento","Categoria","Proveedor","Nacional"};//array de las columnas con el titulo del contenido
+	public Class[] columnasTipos = {Integer.class, String.class,String.class,Date.class,Date.class,String.class,Integer.class,Integer.class,String.class,Double.class,Integer.class, Integer.class,String.class};//tipo de dato a trbajar
 	private ArrayList<Producto> listaProducto = new ArrayList<>();//array list de tipo medico
 
 	/**
@@ -96,6 +96,10 @@ public class Tabla_Productos extends AbstractTableModel {
                 case 11:
                         pro.setProv_id((int)value);
                         break;
+                        
+                 case 12:
+                        pro.setPro_nacionalidad((String)value);
+                        break;        
 		}
                 
                         
@@ -146,6 +150,8 @@ public class Tabla_Productos extends AbstractTableModel {
                     return pro.getCat_id();
                 case 11:
                     return pro.getProv_id();
+                  case 12:
+                    return pro.getPro_nacionalidad();    
                         
 		}
 		return new String();

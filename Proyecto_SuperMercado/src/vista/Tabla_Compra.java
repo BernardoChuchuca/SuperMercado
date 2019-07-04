@@ -14,32 +14,33 @@ import javax.swing.table.AbstractTableModel;
 import modelo.Empleado;
 import modelo.Factura;
 import modelo.Persona;
+import modelo.Registro_Productos;
 
 
 
 
 
 
-public class Tabla_Detalle_Factura extends AbstractTableModel {
+public class Tabla_Compra extends AbstractTableModel {
 
-	public String[] columnas = {"ID","CODIGO","FECHA","IVA","SUBTOTAL","TOTAL PAGAR","ESTADO","ID_EMPLEADO","ID_CLIENTE"};//array de las columnas con el titulo del contenido
-	public Class[] columnasTipos = {Integer.class,Integer.class,Date.class,Double.class,Double.class,Double.class,String.class,Integer.class,Integer.class};//tipo de dato a trbajar
-	private ArrayList<Factura> listaEmpleados = new ArrayList<>();//array list de tipo medico
+	public String[] columnas = {"ID","FECHA","CANTIDAD","ID_PRO","NUM_FAC","ID_PROV"};//array de las columnas con el titulo del contenido
+	public Class[] columnasTipos = {Integer.class,Date.class,Integer.class,Integer.class,Integer.class,Integer.class};//tipo de dato a trbajar
+	private ArrayList<Registro_Productos> listaEmpleados = new ArrayList<>();//array list de tipo medico
 
 	/**
 	 * constructor de la clase que recibe los datos
 	 * @param datos
 	 */
-	public Tabla_Detalle_Factura(ArrayList<Factura> datos) {
+	public Tabla_Compra(ArrayList<Registro_Productos> datos) {
 		super();
-		listaEmpleados= new ArrayList<Factura>();
+		listaEmpleados= new ArrayList<Registro_Productos>();
 		this.listaEmpleados = datos;
 	}
 
 	/** 
 	 * constructor vacio
 	 */
-	public Tabla_Detalle_Factura() {
+	public Tabla_Compra() {
 	}
 
 
@@ -62,38 +63,30 @@ public class Tabla_Detalle_Factura extends AbstractTableModel {
 	 * establece los tados que se optiene de persona
 	 */
 	public void setValueAt(Object value, int row, int col) {
-		Factura emp = (Factura) (listaEmpleados.get(row));
+		Registro_Productos emp = (Registro_Productos) (listaEmpleados.get(row));
 
 		switch (col) {
 		
 		case 0:
-			emp.setFact_id((int) value);
+			emp.setReg_id((int) value);
 			break;
 		case 1:
-			emp.setFact_codigo((int) value);
+			emp.setFecha_compra((Date) value);
 			break;
 		
 		case 2:
-			emp.setFact_fecha((Date) value);
+			emp.setReg_cantidad((int) value);
 			break;
 		case 3:
-			emp.setFact_iva((Double) value);
+			emp.setPro_id((int) value);
 			break;
                 case 4:
-			emp.setFact_subtotal((Double) value);
+			emp.setReg_num_fac((int) value);
 			break;
                 case 5:
-			emp.setFact_total_pagar((Double) value);
+			emp.setProv_id((int) value);
 			break;        
-		case 6:
-			emp.setFact_estado((String) value);
-			break; 
-                case 7:
-			emp.setMer_per_id((int) value);
-			break;
-                case 8:
-			emp.setMer_per_id1((int) value);
-			break;
+	
 		
                 
 		}
@@ -116,29 +109,23 @@ public class Tabla_Detalle_Factura extends AbstractTableModel {
 	 * obtiene la informacion de persona 
 	 */
 	public Object getValueAt(int row, int col) {
-		Factura emp = (Factura) (listaEmpleados.get(row));
+		Registro_Productos emp = (Registro_Productos) (listaEmpleados.get(row));
 
 		switch (col) {
 		
 		case 0:
-			return emp.getFact_id();
+			return emp.getReg_id();
 		case 1:
-			return emp.getFact_codigo();
+			return emp.getFecha_compra();
                 case 2:
-			return emp.getFact_fecha();
+			return emp.getReg_cantidad();
 		case 3:
-			return emp.getFact_iva();
+			return emp.getPro_id();
                  case 4:
-			return emp.getFact_subtotal();        
+			return emp.getReg_num_fac();
                 case 5:
-			return emp.getFact_total_pagar();
-		case 6:
-			return emp.getFact_estado();
-                case 7:
-			return emp.getMer_per_id();
-		case 8:
-			return emp.getMer_per_id1();
-                   
+			return emp.getProv_id();
+		
                       
 		}
 		return new String();

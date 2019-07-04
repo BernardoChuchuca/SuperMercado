@@ -48,7 +48,7 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
     public Ventana_Factura(Gestion gx) {
        
         initComponents();
-        jempleado.setText(gx.getPer_nombre());
+        jempleado.setText(gx.getPer_nombre()+" "+gx.getPer_apellido());
         
         consultar.setVisible(false);
         this.gx=gx;
@@ -84,7 +84,6 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         iva_f = new javax.swing.JTextField();
         supertotal_f = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -196,14 +195,6 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
             }
         });
         panelfactura2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 110, -1));
-
-        jButton5.setText("CONSULTAR FACTURA");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        panelfactura2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 160, -1));
 
         jButton2.setText("BORRAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -347,6 +338,75 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
     return exi;
     }
     
+      public int  codigo(ArrayList<Integer>lis){
+      boolean n=false;
+      int num=1;
+        while (n==false) {      
+             num=new Random().nextInt(100)+0;
+            if(!new GestionPersonas().comparar(num, lis)){
+               n=true;
+            
+            }
+        }
+
+      return num;
+     }
+    
+    public  ArrayList<Integer>getlista(){
+        ArrayList<Integer>list=new ArrayList<>();
+        ArrayList<Factura>list1=new GestionFactura().getListFactura();
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(list1.get(i).getFact_id());
+        }
+    return list;
+    }
+    
+      public int  codigodet(ArrayList<Integer>lis){
+      boolean n=false;
+      int num=1;
+        while (n==false) {      
+             num=new Random().nextInt(100)+0;
+            if(!new GestionFacturasDetalle().comparar(num, lis)){
+               n=true;
+            
+            }
+        }
+
+      return num;
+     }
+    
+    public  ArrayList<Integer>getlistadet(){
+        ArrayList<Integer>list=new ArrayList<>();
+        ArrayList<Detalle_Factura>list1=new GestionFacturasDetalle().getListDetalleFactura();
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(list1.get(i).getDet_id());
+        }
+    return list;
+    }
+    
+     public int  codigodetcod(ArrayList<Integer>lis){
+      boolean n=false;
+      int num=1;
+        while (n==false) {      
+             num=new Random().nextInt(100)+0;
+            if(!new GestionFactura().comparar(num, lis)){
+               n=true;
+            
+            }
+        }
+
+      return num;
+     }
+    
+    public  ArrayList<Integer>getlistadetcod(){
+        ArrayList<Integer>list=new ArrayList<>();
+        ArrayList<Factura>list1=new GestionFactura().getListFactura();
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(list1.get(i).getFact_codigo());
+        }
+    return list;
+    }
+
  /*public void Limpiarc(){ // Metodo para limpiar los jtextfield
 
          cliid.setText("");
@@ -440,10 +500,12 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         Factura fac=new Factura();
         
         //System.out.println(sqlDate);
+        
+        
 
         fac.setFact_id(codigo(getlista()));
         
-        fac.setFact_codigo(codigo(getlistacod()));
+        fac.setFact_codigo(codigodetcod(getlistadetcod()));
         jnumfac.setText(String.valueOf(fac.getFact_codigo()));
         fac.setFact_fecha(sqlDate);
         //fac.setFact_descuento(5);
@@ -512,9 +574,10 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
        
        producto=new GestionProductos().getBuscarPoductoNombre(boxproductos.getSelectedItem().toString());  
        
-        
-        FacDetalle det=new FacDetalle();
-        
+        System.out.println(producto.getPro_stock());
+       
+        if(Double.parseDouble(tcantidad.getText())<producto.getPro_stock()){
+             FacDetalle det=new FacDetalle();
         det.setCantidad(Double.parseDouble(tcantidad.getText()));
         det.setDetalle(boxproductos.getSelectedItem().toString());
         det.setPrecio(producto.getPro_precio());
@@ -529,6 +592,12 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         sub_f.setText(String.valueOf(TotalPagar()));
         iva_f.setText(String.valueOf(Ivatotal()));
         supertotal_f.setText(String.valueOf(TotalPagar()+Ivatotal()));
+        }else{
+        
+        JOptionPane.showMessageDialog(null, " ERROR STOCK DISPONIBLE : "+(producto.getPro_stock()-1));
+        
+        }
+        
         
         //tos.add(total);
         
@@ -551,15 +620,14 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         
          //System.out.println(tos);
         
-        Producto pro= new GestionProductos().getBuscarPoductoid(1);
-        System.out.println(pro.getPro_fec_cadu()+"-"+pro.getPro_nombre());
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+       /* Producto pro= new GestionProductos().getBuscarPoductoid(1);
+        System.out.println(pro.getPro_fec_cadu()+"-"+pro.getPro_nombre());*/
+        //System.out.println( new GestionFacturasDetalle().facdetids());
         
-        new ConsultaFactura().setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+        
+        Factura fac =new GestionFactura().getListFacturaid(1);
+        System.out.println(fac.getFact_total_pagar());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -692,7 +760,6 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -734,53 +801,23 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         
     }
     
-    public int  codigo(ArrayList<Integer>lis){
-      boolean n=false;
-      int num=1;
-        while (n==false) {      
-             num=new Random().nextInt(100)+0;
-            if(!new GestionFactura().comparar(num, lis)){
-               n=true;
-            
-            }
-        }
-
-      return num;
-     }
+   
+   
     
-     public  ArrayList<Integer>getlista(){
-        ArrayList<Integer>list=new ArrayList<>();
-        ArrayList<Factura>list1=new GestionFactura().getListFactura();
-        for (int i = 0; i < list1.size(); i++) {
-            list.add(list1.get(i).getFact_id());                                                                                                                                                
-        }
-    return list;
-    }
-     
-     
-    public  ArrayList<Integer>getlistacod(){
-        ArrayList<Integer>list=new ArrayList<>();
-        ArrayList<Factura>list1=new GestionFactura().getListFactura();
-        for (int i = 0; i < list1.size(); i++) {
-            list.add(list1.get(i).getFact_codigo());                                                                                                                                                
-        }
-    return list;
-    }
     
-    public  ArrayList<Integer>getlistaiddet(){
-        ArrayList<Integer>list=new ArrayList<>();
-        ArrayList<Detalle_Factura>list1=new GestionFacturasDetalle().getListDetalleFactura();
-        for (int i = 0; i < list1.size(); i++) {
-            list.add(list1.get(i).getDet_id());                                                                                                                                                
-        }
-    return list;
+    
+    
+    
+    public void Audi(){
+    
+    
     }
-
     private void RegistrarDetalle(int idfac) {
         
         for (int i = 0; i <tf.size(); i++) {
             Detalle_Factura df=new Detalle_Factura();
-            df.setDet_id(codigo(getlistaiddet()));
+            
+            df.setDet_id(codigodet(getlistadet()));
             df.setDet_catidad(tf.get(i).getCantidad());
             df.setValor_unitario(tf.get(i).getPrecio());
             df.setPro_id(tos.get(i));
@@ -796,5 +833,7 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         
         
     }
+    
+    
     
 }

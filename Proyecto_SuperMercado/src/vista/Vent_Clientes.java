@@ -8,6 +8,7 @@ package vista;
 import controlador.Gestion;
 
 import controlador.GestionPersonas;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -69,8 +70,8 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         jcorr = new javax.swing.JTextField();
         jusu = new javax.swing.JTextField();
         jcont = new javax.swing.JTextField();
-        jdir = new javax.swing.JTextField();
         jtel = new javax.swing.JTextField();
+        jdir = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -194,7 +195,7 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("EDAD :");
+        jLabel10.setText("FEC_NACI(A/M/D) :");
         jPanel2.add(jLabel10);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -282,17 +283,17 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         jcont.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel3.add(jcont);
 
-        jdir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jdir.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jdir.setAlignmentX(0.2F);
-        jdir.setAlignmentY(0.2F);
-        jPanel3.add(jdir);
-
         jtel.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jtel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtel.setAlignmentX(0.2F);
         jtel.setAlignmentY(0.2F);
         jPanel3.add(jtel);
+
+        jdir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jdir.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jdir.setAlignmentX(0.2F);
+        jdir.setAlignmentY(0.2F);
+        jPanel3.add(jdir);
 
         jPanel4.add(jPanel3);
 
@@ -303,34 +304,20 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
 
     
     
-    public int  codigo(ArrayList<Integer>lis){
-      boolean n=false;
-      int num=1;
-        while (n==false) {      
-             num=new Random().nextInt(100)+0;
-            if(!new GestionPersonas().comparar(num, lis)){
-               n=true;
-            
-            }
-        }
-
-      return num;
-     }
     
-    public  ArrayList<Integer>getlista(){
-        ArrayList<Integer>list=new ArrayList<>();
-        ArrayList<Persona>list1=new GestionPersonas().getListPersonas();
-        for (int i = 0; i < list1.size(); i++) {
-            list.add(list1.get(i).getPer_id());
-        }
-    return list;
-    }
     
+  
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Persona per=new Persona();
        
+         java.util.Date utilDate= new java.util.Date();
+       
+        utilDate=Date.valueOf(jeda.getText());
+        
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        
          
          
         if(new Gestion().Cedula(jced.getText()) && jced.getText().length()==10){
@@ -342,7 +329,7 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         per.setPer_apellido(jape.getText());
         per.setPer_direccion(jdir.getText());
         per.setPer_telefono(jtel.getText());
-        per.setPer_edad(0);
+        per.setFec_naci(sqlDate);
        
         per.setEmp_cargo("N");
         per.setEmp_contrasena("null");
@@ -405,6 +392,7 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         jdir.setText(per.getPer_direccion());
         jtel.setText(per.getPer_telefono());
         jcorr.setText(per.getCorreo());
+        jeda.setText(String.valueOf((Date)per.getFec_naci()));
         } else {
                 
                 JOptionPane.showMessageDialog(null,"PERSONA NO EXISTE");
@@ -438,14 +426,18 @@ public class Vent_Clientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         Persona per=new Persona();
+        java.util.Date utilDate= new java.util.Date();
+       
+        utilDate=Date.valueOf(jeda.getText());
         
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         per.setPer_id(Integer.parseInt(lcod.getText()));
         per.setPer_cedula(jced.getText());
         per.setPer_nombre(jnom.getText());
         per.setPer_apellido(jape.getText());
         per.setPer_direccion(jdir.getText());
         per.setPer_telefono(jtel.getText());
-         per.setPer_edad(0);
+         per.setFec_naci(sqlDate);
         //per.setPer_edad(Integer.parseInt(jeda.getText()));
        /* per.setEmp_cargo(jcar.getText());
         per.setEmp_contrasena(jcont.getText());
@@ -534,6 +526,29 @@ public boolean Existe(String cedula){
         
     
     return exi;
+    }
+
+   public int  codigo(ArrayList<Integer>lis){
+      boolean n=false;
+      int num=1;
+        while (n==false) {      
+             num=new Random().nextInt(100)+0;
+            if(!new GestionPersonas().comparar(num, lis)){
+               n=true;
+            
+            }
+        }
+
+      return num;
+     }
+    
+    public  ArrayList<Integer>getlista(){
+        ArrayList<Integer>list=new ArrayList<>();
+        ArrayList<Persona>list1=new GestionPersonas().getListPersonas();
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(list1.get(i).getPer_id());
+        }
+    return list;
     }
 
 

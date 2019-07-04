@@ -19,6 +19,10 @@ public class Ventana extends javax.swing.JFrame {
          Vent_Clientes ven=new Vent_Clientes();
          Vent_Empleados ven_e=new Vent_Empleados();
          Inicio ini=new Inicio();
+         Vent_Productos vent_p=new Vent_Productos();
+         ConsultaFactura ven_c_f=new ConsultaFactura();
+         ConsultaCompra ven_prov=new ConsultaCompra();
+         AnularFactura ven_a=new AnularFactura();
         
          
          
@@ -68,6 +72,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
@@ -124,6 +133,41 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu8.setText("REPORTES");
+        jMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jMenuItem2.setText("COMPRA-PROVEEDOR");
+        jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem2);
+
+        jMenu9.setText("FACTURAS");
+
+        jMenuItem1.setText("REALIZADAS");
+        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem1);
+
+        jMenuItem3.setText("ANULAR");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem3);
+
+        jMenu8.add(jMenu9);
+
+        jMenuBar1.add(jMenu8);
+
         jMenu7.setText("OTRA CUENTA");
         jMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,6 +206,12 @@ public class Ventana extends javax.swing.JFrame {
             escritorio.remove(ini);
         escritorio.remove(ven_e);
         escritorio.remove(ven_f);
+        escritorio.remove(vent_p);
+         escritorio.remove(ven_c_f);
+             escritorio.remove(ven_prov);
+             escritorio.remove(ven_a);
+         
+        
         if(ven.isClosed()){
             
             escritorio.remove(ven);
@@ -187,6 +237,11 @@ public class Ventana extends javax.swing.JFrame {
             escritorio.remove(ven);
             escritorio.remove(ven_f);
              escritorio.remove(ini);
+             escritorio.remove(vent_p);
+             escritorio.remove(ven_c_f);
+             escritorio.remove(ven_a);
+             
+               escritorio.remove(ven_prov);
        
        if(ven_e.isClosed()){
             escritorio.remove(ven_e);
@@ -211,8 +266,12 @@ public class Ventana extends javax.swing.JFrame {
             escritorio.remove(ven);
             escritorio.remove(ven_e);
              escritorio.remove(ini);
+             escritorio.remove(ven_f);
+             escritorio.remove(ven_c_f);
+               escritorio.remove(ven_prov);
+               escritorio.remove(ven_a);
        
-       if(ven_e.isClosed()){
+       if(ven_f.isClosed()){
            
             escritorio.remove(ven_f);
             escritorio.add(ven_f);
@@ -232,13 +291,17 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         // TODO add your handling code here:
-         Vent_Productos vent_p=new Vent_Productos();
+         
         
         if(gx.getRol().equals("A")|| gx.getRol().equals("E")){
         escritorio.remove(ini);
         escritorio.remove(ven_e);
         escritorio.remove(ven_f);
-        if(ven.isClosed()){
+        escritorio.remove(ven);
+        escritorio.remove(ven_c_f);
+          escritorio.remove(ven_prov);
+          escritorio.remove(ven_a);
+        if(vent_p.isClosed()){
             escritorio.remove(vent_p);
             escritorio.add(vent_p);
         }else{
@@ -272,6 +335,92 @@ public class Ventana extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+        if(gx.getRol().equals("A") ){
+            escritorio.remove(ven);
+            escritorio.remove(ven_f);
+             escritorio.remove(ini);
+             escritorio.remove(ven_e);
+             escritorio.remove(vent_p);
+               escritorio.remove(ven_prov);
+               escritorio.remove(ven_a);
+             
+             
+       
+       if(ven_c_f.isClosed()){
+            escritorio.remove(ven_c_f);
+            escritorio.add(ven_c_f);
+        }else{
+        escritorio.remove(ven_c_f);
+            escritorio.add(ven_c_f);
+        }
+       
+        ven_c_f.setVisible(true);
+        }else {
+        JOptionPane.showMessageDialog(null,"ACCESO BLOQUEADO");
+        
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+         if(gx.getRol().equals("A") ){
+            escritorio.remove(ven);
+            escritorio.remove(ven_f);
+             escritorio.remove(ini);
+             escritorio.remove(ven_e);
+             escritorio.remove(vent_p);
+               escritorio.remove(ven_c_f);
+               escritorio.remove(ven_a);
+             
+             
+       
+       if(ven_prov.isClosed()){
+            escritorio.remove(ven_prov);
+            escritorio.add(ven_prov);
+        }else{
+        escritorio.remove(ven_prov);
+            escritorio.add(ven_prov);
+        }
+       
+        ven_prov.setVisible(true);
+        }else {
+        JOptionPane.showMessageDialog(null,"ACCESO BLOQUEADO");
+        
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        
+          if(gx.getRol().equals("A") ){
+            escritorio.remove(ven);
+            escritorio.remove(ven_f);
+             escritorio.remove(ini);
+             escritorio.remove(ven_e);
+             escritorio.remove(vent_p);
+               escritorio.remove(ven_c_f);
+               escritorio.remove(ven_prov);
+             
+             
+       
+       if(ven_a.isClosed()){
+            escritorio.remove(ven_a);
+            escritorio.add(ven_a);
+        }else{
+        escritorio.remove(ven_a);
+            escritorio.add(ven_a);
+        }
+       
+        ven_a.setVisible(true);
+        }else {
+        JOptionPane.showMessageDialog(null,"ACCESO BLOQUEADO");
+        
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
       
     /**
      * @param args the command line arguments
@@ -286,6 +435,11 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
