@@ -284,6 +284,44 @@ public class GestionFactura {
         }
      }
       
+    public ArrayList<Factura> getListFacturaAnulada( ){
+        
+    ArrayList<Factura> os=new ArrayList<>();
+    Connection ctx=null;
+        try {
+            ctx=Conexion.getConnection();
+            Statement st=ctx.createStatement();
+            ResultSet rs=st.executeQuery("SELECT *"
+                    + " FROM MER_FACTURAS_CABECERAS WHERE FACT_ESTADO = 'A'");
+            while(rs.next()){
+          Factura fac =new Factura();
+            
+            
+            fac.setFact_id(rs.getInt("FACT_ID"));
+              fac.setFact_codigo(rs.getInt("FACT_CODIGO"));
+             fac.setFact_fecha(rs.getDate("FACT_FECHA"));
+             //fac.setFact_descuento(rs.getDouble("FACT_DESCUENTO"));
+             fac.setFact_iva(rs.getDouble("FACT_IVA"));
+             fac.setFact_subtotal(rs.getDouble("FACT_SUBTOTAL"));
+             fac.setFact_total_pagar(rs.getDouble("FACT_TOTAL_PAGAR"));
+             fac.setFact_estado(rs.getString("FACT_ESTADO").trim());
+             fac.setMer_per_id(rs.getInt("MER_PERSONAS_PER_ID"));
+             fac.setMer_per_id1(rs.getInt("MER_PERSONAS_PER_ID1"));
+            
+            os.add(fac);
+               
+            }
+        } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+             
+            System.out.println("Error en Listado");
+        }finally{
+        Conexion.close(ctx);
+            System.err.println("CONEXION CERRADA");
+            
+        }
+    return os;
+    }    
       
 }
 
