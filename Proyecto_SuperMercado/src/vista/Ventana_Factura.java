@@ -17,6 +17,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import modelo.Cliente;
 import modelo.Detalle_Factura;
 import modelo.FacDetalle;
@@ -112,6 +113,7 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         setMaximumSize(new java.awt.Dimension(1342, 685));
         setMinimumSize(new java.awt.Dimension(1342, 685));
         setPreferredSize(new java.awt.Dimension(1342, 685));
+        getContentPane().setLayout(null);
 
         panelfactura2.setName("panelfactura"); // NOI18N
         panelfactura2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -300,21 +302,8 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
 
         panelfactura2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 660, 130));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(panelfactura2, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelfactura2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 113, Short.MAX_VALUE))
-        );
+        getContentPane().add(panelfactura2);
+        panelfactura2.setBounds(193, 0, 890, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -467,7 +456,7 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
             }else{
             cliente= new GestionPersonas().getBuscarCedula(faccedula.getText());
             facfecha.setText(String.valueOf((Date)sqlDate));
-            facnombrecli.setText(cliente.getPer_nombre());
+            facnombrecli.setText(cliente.getPer_nombre()+" "+cliente.getPer_apellido());
             factelefono.setText(cliente.getPer_telefono());
 
             facemial.setText(cliente.getCorreo());
@@ -524,6 +513,8 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         //GestionFactura fact=new GestionFactura();
        // fact.getListFactura().get(1).getFact_total_pagar();
         //GestionFacturasDetalle detalle=new GestionFacturasDetalle();
+       new Imprimir_Factura(facemial,faccedula,facfecha,facnombrecli,jempleado,facdireccion,factelefono,jnumfac,tf,sub_f,iva_f,supertotal_f).setVisible(true);
+        
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -625,8 +616,12 @@ public class Ventana_Factura extends javax.swing.JInternalFrame {
         //System.out.println( new GestionFacturasDetalle().facdetids());
         
         
-        Factura fac =new GestionFactura().getListFacturaid(1);
-        System.out.println(fac.getFact_total_pagar());
+       /* Factura fac =new GestionFactura().getListFacturaid(1);
+        System.out.println(fac.getFact_total_pagar());*/
+       
+       //new Imprimir_Factura().setVisible(true);
+       jnumfac.setText("001");
+      // new Imprimir_Factura(facemial,faccedula,facfecha,facnombrecli,jempleado,facdireccion,factelefono,jnumfac,tf,sub_f,iva_f,supertotal_f).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
