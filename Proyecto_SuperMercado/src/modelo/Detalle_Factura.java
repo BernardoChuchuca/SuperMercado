@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author Bernardo
+ * @author john
  */
 public class Detalle_Factura {
     
